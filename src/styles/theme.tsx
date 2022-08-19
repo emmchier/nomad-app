@@ -1,4 +1,5 @@
 import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+import { buttonStyles } from '../components/atomic-design/atoms/button/ButtonStyles';
 
 export const theme = {
   color: {
@@ -148,6 +149,7 @@ export const customTheme = extendTheme({
     yesteryear: 'Yesteryear, cursive',
   },
   components: {
+    Button: buttonStyles,
     Container: {
       variants: {
         md: {

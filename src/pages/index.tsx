@@ -1,14 +1,17 @@
 import type { NextPage } from 'next';
 
-import { Button } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import Page from '../components/atomic-design/atoms/page';
+import CustomButton from '../components/atomic-design/atoms/button';
 
-const Home: NextPage = () => {
+const HomePage: NextPage = () => {
   return (
-    <>
-      <h1>NOMAD App</h1>
-      <Button>Button</Button>
-    </>
+    <Page title="Sparky App" description="" keywords="" tag="">
+      <Box as="section" height="100vh">
+        <CustomButton ariaLabel="lala">Reservar</CustomButton>
+      </Box>
+    </Page>
   );
 };
 
-export default Home;
+export default HomePage;
