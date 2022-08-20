@@ -1,0 +1,10 @@
+{
+  "phone": "(054) 1234567",
+  "email": "info@nomadperu.com.pe",
+  "social-media": [
+    { "slug": "youTube", "link": "youtube.com" },
+    { "slug": "facebook", "link": "facebook.com" },
+    { "slug": "twitter", "link": "twitter.com" },
+    { "slug": "instagram", "link": "instagram.com" }
+  ]
+}
