@@ -28,7 +28,9 @@ const NavList: FC<NavListI> = ({ list, direction = 'vertical', showLast = false 
             borderRadius="8px"
             _hover={{ bg: 'grey.blur' }}
             cursor="pointer"
-            p={direction === 'horizontal' ? '4' : '0'}
+            mr="2"
+            px={direction === 'horizontal' ? '4' : '0'}
+            py="2.5"
           >
             <Link href="/#!">{item.title}</Link>
           </ListItem>

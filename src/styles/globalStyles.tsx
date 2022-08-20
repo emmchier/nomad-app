@@ -30,6 +30,12 @@ export const GlobalStyles = createGlobalStyle`
     line-height: ${({ theme }) => theme.font.body[2].desk.lineHeight};
     font-weight: ${({ theme }) => theme.font.weight.medium};
   }
+
+  .chakra-container {
+    padding-left: ${({ theme }) => theme.spacing(7)} !important;
+    padding-right: ${({ theme }) => theme.spacing(7)} !important;
+  }
+
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
     ::-webkit-scrollbar {
       display: none;

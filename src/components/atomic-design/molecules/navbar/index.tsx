@@ -20,9 +20,7 @@ const Navbar: FC<NavbarI> = ({ list }) => {
       <Container display="flex" alignItems="center" justifyContent="space-between">
         <Brand>
           <Link href="/">
-            <Box height="100%" display="flex" alignItems="center" p="6">
-              <Icon icon="brand" ariaLabel="Nomad branding" />
-            </Box>
+            <Icon icon="brand" ariaLabel="Nomad branding" />
           </Link>
         </Brand>
         <NavbarActions>
@@ -34,14 +32,12 @@ const Navbar: FC<NavbarI> = ({ list }) => {
             </Button>
           </span>
           <Button
-            height="100%"
             ariaLabel="reservar"
             iconLeft={true}
             icon={<Icon ariaLabel="icono calendario" icon="calendar" color="white" />}
           >
             Reservar
           </Button>
-
           <BurguerButton>
             <Button height="100%" ariaLabel="abrir menú">
               <Icon icon="burger" color="#3D63A9" ariaLabel="menú hamburguesa" />

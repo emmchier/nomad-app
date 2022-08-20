@@ -140,7 +140,7 @@ export const Container = styled.button<ButtonI>`
   justify-content: center;
   cursor: pointer;
   border: none;
-  padding: ${({ theme }) => `${theme.spacing(3)} ${theme.spacing(5)}`};
+  padding: 0 ${({ theme }) => theme.spacing(4)};
   font-size: ${({ theme }) => theme.font.body[2].desk.size};
   line-height: ${({ theme }) => theme.font.body[2].desk.lineHeight};
   font-weight: ${({ theme }) => theme.font.weight.bold};
@@ -148,6 +148,7 @@ export const Container = styled.button<ButtonI>`
   transition: ${({ theme }) => theme.transition.main};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
+  min-height: ${({ theme }) => theme.spacing(11.5)};
   border-radius: ${({ theme }) => theme.border.radius.sm};
   object-fit: contain;
 
@@ -169,9 +170,14 @@ export const Container = styled.button<ButtonI>`
     }
   }
 
+  @media only screen and (${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 0 ${({ theme }) => theme.spacing(3)};
+  }
+
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
     font-size: ${({ theme }) => theme.font.body[3].mob.size};
     line-height: ${({ theme }) => theme.font.body[3].mob.lineHeight};
+    font-weight: ${({ theme }) => theme.font.weight.bold} !important;
   }
 `;
 

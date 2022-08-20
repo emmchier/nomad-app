@@ -3,7 +3,7 @@ import { ChakraThemeProvider } from '../providers/ChakraThemeProvider';
 import { StyledThemeProvider } from '../providers/StyledThemeProvider';
 import { SWRConfig } from 'swr';
 
-import MainLayout from '../components/layouts/main-layout';
+import MainLayout from '../components/layouts/main-layout/main-layout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <SWRConfig

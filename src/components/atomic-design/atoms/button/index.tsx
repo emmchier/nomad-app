@@ -43,7 +43,7 @@ const Button: FC<PropTypes> = ({
   >
     {iconLeft && <IconLeft>{icon}</IconLeft>}
     {children}
-    {iconRight && <IconLeft>{icon}</IconLeft>}
+    {iconRight && <IconRight>{icon}</IconRight>}
   </Container>
 );
 

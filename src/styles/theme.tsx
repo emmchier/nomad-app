@@ -34,8 +34,8 @@ export const theme = {
     title: {
       1: {
         desk: {
-          size: '3rem', // 48px
-          lineHeight: '3.75rem', // 60px
+          size: '4.5em', // 72px
+          lineHeight: '3.875rem', // 62px
         },
         mob: {
           size: '2rem', // 32px
@@ -133,8 +133,8 @@ const config: ThemeConfig = {
 
 export const customTheme = extendTheme({
   config,
-  body: {
-    size: '15px',
+  sizes: {
+    body: '15px',
   },
   colors: {
     primary: {

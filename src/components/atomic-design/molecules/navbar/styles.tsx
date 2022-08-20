@@ -4,11 +4,11 @@ export const Header = styled.header`
   padding: ${({ theme }) => theme.spacing(6)} 0;
   position: fixed;
   top: 0;
-  max-height: ${({ theme }) => theme.spacing(120)};
+  height: auto;
   width: 100%;
 
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
-    max-height: ${({ theme }) => theme.spacing(100)};
+    padding: ${({ theme }) => theme.spacing(14)} 0;
   }
 `;
 
@@ -20,23 +20,35 @@ export const NavbarActions = styled.div`
   box-shadow: ${({ theme }) => theme.shadow.main};
   border-radius: ${({ theme }) => theme.border.radius.main};
   padding: ${({ theme }) => theme.spacing(2)};
+  position: relative;
+  background: ${({ theme }) => theme.color.white};
 
   button {
     margin-left: ${({ theme }) => theme.spacing(2)};
+    object-fit: scale-down;
   }
 
   @media only screen and (${({ theme }) => theme.breakpoints.tablet}) {
     padding: 0;
     box-shadow: none;
+    background: transparent;
 
     ul,
     hr,
     span button {
       display: none;
     }
+
+    button {
+      margin-left: ${({ theme }) => theme.spacing(3)} !important;
+    }
+
+    button:nth-child(1) {
+      padding: 0 ${({ theme }) => theme.spacing(4)};
+    }
   }
 
-  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+  @media only screen and (${({ theme }) => theme.breakpoints.tablet}) {
     button {
       color: ${({ theme }) => theme.color.primary.main};
       background: ${({ theme }) => theme.color.white};
@@ -63,17 +75,37 @@ export const NavbarActions = styled.div`
 export const Brand = styled.div`
   box-shadow: ${({ theme }) => theme.shadow.main};
   border-radius: ${({ theme }) => theme.border.radius.main};
+  background: ${({ theme }) => theme.color.white};
+  padding: 0 ${({ theme }) => theme.spacing(5)};
   cursor: pointer;
+  height: ${({ theme }) => theme.spacing(15)};
 
-  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+  figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    svg {
+      width: ${({ theme }) => theme.spacing(20)};
+    }
+  }
+
+  @media only screen and (${({ theme }) => theme.breakpoints.tablet}) {
+    height: ${({ theme }) => theme.spacing(11.5)};
+    border-radius: ${({ theme }) => theme.border.radius.sm};
     box-shadow: none;
+
+    svg {
+      width: ${({ theme }) => theme.spacing(18)} !important;
+    }
   }
 `;
 
 export const BurguerButton = styled.div`
   display: none;
 
-  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+  @media only screen and (${({ theme }) => theme.breakpoints.tablet}) {
     display: block;
   }
 `;
