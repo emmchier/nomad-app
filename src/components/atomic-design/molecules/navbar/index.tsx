@@ -7,7 +7,8 @@ import { Box, Container, Divider, Flex } from '@chakra-ui/react';
 import Icon from '../../atoms/icon';
 import NavList from '../../organisms/nav-list';
 import Button from '../../atoms/button';
-import { NavbarActions } from './styles';
+
+import { Header, NavbarActions, Brand, BurguerButton } from './styles';
 
 interface NavbarI {
   list: NavLink[];
@@ -15,27 +16,23 @@ interface NavbarI {
 
 const Navbar: FC<NavbarI> = ({ list }) => {
   return (
-    <Flex as="header" py="6" position="fixed" w="100%" maxH="120px">
+    <Header>
       <Container display="flex" alignItems="center" justifyContent="space-between">
-        <Link href="/">
-          <Box
-            shadow="main"
-            height="100%"
-            display="flex"
-            alignItems="center"
-            p="6"
-            borderRadius={16}
-            cursor="pointer"
-          >
-            <Icon icon="brand" ariaLabel="Nomad branding" />
-          </Box>
-        </Link>
+        <Brand>
+          <Link href="/">
+            <Box height="100%" display="flex" alignItems="center" p="6">
+              <Icon icon="brand" ariaLabel="Nomad branding" />
+            </Box>
+          </Link>
+        </Brand>
         <NavbarActions>
           <NavList list={list} direction="horizontal" />
           <Divider height="20px" ml="2" borderColor="black" orientation="vertical" />
-          <Button variant="text" height="100%" ariaLabel="traducir al inglés">
-            English
-          </Button>
+          <span>
+            <Button variant="text" height="100%" ariaLabel="traducir al inglés">
+              English
+            </Button>
+          </span>
           <Button
             height="100%"
             ariaLabel="reservar"
@@ -44,9 +41,15 @@ const Navbar: FC<NavbarI> = ({ list }) => {
           >
             Reservar
           </Button>
+
+          <BurguerButton>
+            <Button height="100%" ariaLabel="abrir menú">
+              <Icon icon="burger" color="#3D63A9" ariaLabel="menú hamburguesa" />
+            </Button>
+          </BurguerButton>
         </NavbarActions>
       </Container>
-    </Flex>
+    </Header>
   );
 };
 

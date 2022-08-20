@@ -117,11 +117,11 @@ const variantStyles = (variant: string) =>
       transition: ${({ theme }) => theme.transition.main};
 
       &:hover {
-        background: ${({ theme }) => theme.color.grey.blur};
-      }
-
-      &:hover {
         opacity: 0.8;
+        svg {
+          filter: brightness(0) saturate(100%) invert(41%) sepia(15%) saturate(2224%)
+            hue-rotate(180deg) brightness(84%) contrast(88%) !important;
+        }
       }
 
       &:disabled {
@@ -129,7 +129,6 @@ const variantStyles = (variant: string) =>
           filter: brightness(0) saturate(100%) invert(99%) sepia(16%) saturate(89%)
             hue-rotate(261deg) brightness(112%) contrast(77%);
         }
-        background: transparent;
       }
     `,
   }[variant]);

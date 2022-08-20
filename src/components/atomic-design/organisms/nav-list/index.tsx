@@ -19,20 +19,22 @@ const NavList: FC<NavListI> = ({ list, direction = 'vertical', showLast = false 
     showLast === true ? list : list.filter((item) => slugify(item.title) !== 'inversores');
 
   return (
-    <CustomList direction={direction}>
-      {filterItems()?.map((item: NavLink) => (
-        <ListItem
-          as="li"
-          key={slugify(item.title)}
-          borderRadius="8px"
-          _hover={{ bg: 'grey.blur' }}
-          cursor="pointer"
-          p={direction === 'horizontal' ? '4' : '0'}
-        >
-          <Link href="/#!">{item.title}</Link>
-        </ListItem>
-      ))}
-    </CustomList>
+    <nav role="navigation">
+      <CustomList direction={direction}>
+        {filterItems()?.map((item: NavLink) => (
+          <ListItem
+            as="li"
+            key={slugify(item.title)}
+            borderRadius="8px"
+            _hover={{ bg: 'grey.blur' }}
+            cursor="pointer"
+            p={direction === 'horizontal' ? '4' : '0'}
+          >
+            <Link href="/#!">{item.title}</Link>
+          </ListItem>
+        ))}
+      </CustomList>
+    </nav>
   );
 };
 
