@@ -1,26 +1,50 @@
 import React, { FC } from 'react';
 
-import { Button } from '@chakra-ui/react';
+import { Container, IconLeft, IconRight } from './styles';
 
 interface PropTypes {
   children: React.ReactNode;
-  ariaLabel: string;
-  icon?: React.ReactElement;
-  onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
+  color?: string;
+  variant?: 'contained' | 'outlined' | 'text' | 'icon';
+  ariaLabel?: string;
+  icon?: React.ReactNode;
+  iconRight?: boolean;
+  iconLeft?: boolean;
+  disabled?: boolean;
+  width?: string;
+  height?: string;
+  onClick?: (e: any) => any;
 }
 
-const CustomButton: FC<PropTypes> = ({ children, ariaLabel, icon, onClick }) => {
-  return (
-    <Button
-      aria-label={ariaLabel}
-      _hover={{ bg: '#284F96' }}
-      _active={{ bg: '#163877' }}
-      leftIcon={icon}
-      onClick={onClick}
-    >
-      {children}
-    </Button>
-  );
-};
+const Button: FC<PropTypes> = ({
+  children,
+  type = 'button',
+  color = 'primary',
+  variant = 'contained',
+  icon = null,
+  disabled = false,
+  ariaLabel = '',
+  iconLeft = false,
+  iconRight = false,
+  width = 'auto',
+  height = 'auto',
+  onClick,
+}) => (
+  <Container
+    type={type}
+    color={color}
+    variant={variant}
+    disabled={disabled}
+    aria-label={ariaLabel}
+    width={width}
+    height={height}
+    onClick={onClick}
+  >
+    {iconLeft && <IconLeft>{icon}</IconLeft>}
+    {children}
+    {iconRight && <IconLeft>{icon}</IconLeft>}
+  </Container>
+);
 
-export default CustomButton;
+export default Button;

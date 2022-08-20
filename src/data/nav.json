@@ -1,7 +1,7 @@
 [
-  { "slug": "Alojate" },
-  { "slug": "Co-Work" },
-  { "slug": "Experimenta", "activities": ["City Host", "Actividades", "Gastronomía", "Eventos"] },
-  { "slug": "Únete" },
-  { "slug": "Inversores" }
+  { "title": "Alojate" },
+  { "title": "Co-Work" },
+  { "title": "Experimenta", "activities": ["City Host", "Actividades", "Gastronomía", "Eventos"] },
+  { "title": "Únete" },
+  { "title": "Inversores" }
 ]
