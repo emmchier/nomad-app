@@ -768,8 +768,8 @@ export const YoutubeIcon: FC<IconI> = ({ color = '#2B2B2B', ariaLabel = '' }) =>
     <svg
       aria-label={ariaLabel}
       width="22"
-      height="15"
-      viewBox="0 0 22 15"
+      height="20"
+      viewBox="0 -1 22 15"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

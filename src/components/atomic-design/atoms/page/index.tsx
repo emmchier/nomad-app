@@ -4,10 +4,10 @@ import Head from 'next/head';
 
 type PageTypes = {
   children: React.ReactNode;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   tag?: string;
-  keywords: string;
+  keywords?: string[];
 };
 
 const Page: FC<PageTypes> = ({ children, title, description, tag, keywords }) => (

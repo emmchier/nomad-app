@@ -32,7 +32,9 @@ const NavList: FC<NavListI> = ({ list, direction = 'vertical', showLast = false 
             px={direction === 'horizontal' ? '4' : '0'}
             py="2.5"
           >
-            <Link href="/#!">{item.title}</Link>
+            <Link href="[#!]" as="#!" passHref>
+              <a>{item.title}</a>
+            </Link>
           </ListItem>
         ))}
       </CustomList>

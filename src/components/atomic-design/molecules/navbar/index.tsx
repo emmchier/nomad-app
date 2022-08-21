@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import { NavLink } from '../../../../interfaces';
 
-import { Box, Container, Divider, Flex } from '@chakra-ui/react';
+import { Container, Divider } from '@chakra-ui/react';
 import Icon from '../../atoms/icon';
 import NavList from '../../organisms/nav-list';
 import Button from '../../atoms/button';
@@ -18,13 +18,15 @@ const Navbar: FC<NavbarI> = ({ list }) => {
   return (
     <Header>
       <Container display="flex" alignItems="center" justifyContent="space-between">
-        <Brand>
-          <Link href="/">
-            <Icon icon="brand" ariaLabel="Nomad branding" />
-          </Link>
-        </Brand>
+        <Link href="/" as="/" passHref>
+          <a>
+            <Brand>
+              <Icon icon="brand" ariaLabel="logo de Nomad" />
+            </Brand>
+          </a>
+        </Link>
         <NavbarActions>
-          <NavList list={list} direction="horizontal" />
+          <NavList list={list || []} direction="horizontal" />
           <Divider height="20px" ml="2" borderColor="black" orientation="vertical" />
           <span>
             <Button variant="text" height="100%" ariaLabel="traducir al inglés">

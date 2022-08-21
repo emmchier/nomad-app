@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import useFecthData from '../../../hooks/useFecthData';
 
-import navList from '../../../data/nav.json';
 import BannerDown from '../../atomic-design/atoms/banner-down';
+import Footer from '../../atomic-design/molecules/footer';
 
 import Navbar from '../../atomic-design/molecules/navbar';
 import { MainContent, ScrolleableContent } from './styles';
@@ -11,13 +12,17 @@ interface Proptypes {
 }
 
 const MainLayout: FC<Proptypes> = ({ children }) => {
+  const { state: navList } = useFecthData('/nav');
+  const { state: footerData } = useFecthData('/footer');
+
   return (
     <MainContent role="main">
       <ScrolleableContent>
         <Navbar list={navList} />
         {children}
+        <Footer data={footerData} navList={navList} />
       </ScrolleableContent>
-      <BannerDown />
+      <BannerDown text="Gracias por scrollear  :)" />
     </MainContent>
   );
 };
