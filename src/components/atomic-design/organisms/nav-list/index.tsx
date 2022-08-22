@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import Link from 'next/link';
 
 import { ListItem } from '@chakra-ui/react';
@@ -7,16 +7,19 @@ import { NavLink } from '../../../../interfaces';
 import { slugify } from '../../../../utils';
 
 import CustomList from '../../atoms/list';
+import { GlobalDataContext } from '../../../../context/index';
 
 interface NavListI {
-  list: NavLink[];
   direction?: string;
   showLast?: boolean;
 }
 
-const NavList: FC<NavListI> = ({ list, direction = 'vertical', showLast = false }) => {
+const NavList: FC<NavListI> = ({ direction = 'vertical', showLast = false }) => {
+  const { navList } = useContext(GlobalDataContext);
   const filterItems = () =>
-    showLast === true ? list : list.filter((item) => slugify(item.title) !== 'inversores');
+    showLast === true
+      ? navList
+      : navList.filter((item: NavLink) => slugify(item.title) !== 'inversores');
 
   return (
     <nav role="navigation">

@@ -1,3 +1,7 @@
+export interface GlobalData {
+  data?: any;
+}
+
 export interface NavLink {
   title: string;
   activities?: string[];

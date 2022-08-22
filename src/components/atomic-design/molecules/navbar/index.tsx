@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import Link from 'next/link';
-import { NavLink } from '../../../../interfaces';
 
 import { Container, Divider } from '@chakra-ui/react';
 import Icon from '../../atoms/icon';
@@ -9,12 +8,13 @@ import NavList from '../../organisms/nav-list';
 import Button from '../../atoms/button';
 
 import { Header, NavbarActions, Brand, BurguerButton } from './styles';
+import { GlobalDataContext } from '../../../../context';
+import LanguageButton from '../../atoms/language-button';
+import ReservarButton from '../../atoms/reservar-button';
 
-interface NavbarI {
-  list: NavLink[];
-}
+const Navbar: FC = () => {
+  const { setOpenNavbarMenu } = useContext(GlobalDataContext);
 
-const Navbar: FC<NavbarI> = ({ list }) => {
   return (
     <Header>
       <Container display="flex" alignItems="center" justifyContent="space-between">
@@ -26,22 +26,14 @@ const Navbar: FC<NavbarI> = ({ list }) => {
           </a>
         </Link>
         <NavbarActions>
-          <NavList list={list || []} direction="horizontal" />
+          <NavList direction="horizontal" />
           <Divider height="20px" ml="2" borderColor="black" orientation="vertical" />
           <span>
-            <Button variant="text" height="100%" ariaLabel="traducir al inglés">
-              English
-            </Button>
+            <LanguageButton />
           </span>
-          <Button
-            ariaLabel="reservar"
-            iconLeft={true}
-            icon={<Icon ariaLabel="icono calendario" icon="calendar" color="white" />}
-          >
-            Reservar
-          </Button>
+          <ReservarButton />
           <BurguerButton>
-            <Button height="100%" ariaLabel="abrir menú">
+            <Button onClick={() => setOpenNavbarMenu(true)} height="100%" ariaLabel="abrir menú">
               <Icon icon="burger" color="#3D63A9" ariaLabel="menú hamburguesa" />
             </Button>
           </BurguerButton>

@@ -4,6 +4,7 @@ import { StyledThemeProvider } from '../providers/StyledThemeProvider';
 import { SWRConfig } from 'swr';
 
 import MainLayout from '../components/layouts/main-layout/main-layout';
+import GlobalDataProvider from '../providers/GlobalDataProvider';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <SWRConfig
@@ -11,9 +12,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
   >
     <ChakraThemeProvider>
       <StyledThemeProvider>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <GlobalDataProvider>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </GlobalDataProvider>
       </StyledThemeProvider>
     </ChakraThemeProvider>
   </SWRConfig>

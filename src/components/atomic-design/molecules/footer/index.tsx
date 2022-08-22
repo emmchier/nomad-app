@@ -1,20 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { Box, Container, Divider, Grid, GridItem, Heading, Text } from '@chakra-ui/react';
 
 import { FooterContent } from './styles';
 import Icon from '../../atoms/icon';
-import { FooterTypes, NavLink } from '../../../../interfaces';
 import NavList from '../../organisms/nav-list';
 import SocialNetworkList from '../../organisms/social-network-list';
+import { GlobalDataContext } from '../../../../context';
 
-interface FooterI {
-  data: FooterTypes;
-  navList?: NavLink[];
-}
-
-const Footer: FC<FooterI> = ({ data, navList }) => {
-  const { prefix, phone, email, socialMedia } = data;
+const Footer: FC = () => {
+  const { footerData } = useContext(GlobalDataContext);
+  const { prefix, phone, email, socialMedia } = footerData;
 
   return (
     <FooterContent>
@@ -36,7 +32,7 @@ const Footer: FC<FooterI> = ({ data, navList }) => {
             <Icon icon="brand" ariaLabel="logo de Nomad" />
             <Text
               my="30px"
-              w={{ base: '76%', lg: '100%' }}
+              w={{ base: '100%', lg: '90%' }}
               textAlign={{ base: 'center', lg: 'start' }}
             >
               Here we should have a few words about what and who the company is. This should serve
@@ -60,9 +56,11 @@ const Footer: FC<FooterI> = ({ data, navList }) => {
                 <Heading variant="h3" as="h6" fontWeight="bold" fontSize="24px">
                   Contacta con nosotros
                 </Heading>
+
                 <Text fontSize="17px" my="16px" mb="3px">
                   <a href={`tel:${prefix}${phone}`}>T: {`(${prefix}) ${phone}`}</a>
                 </Text>
+
                 <Text fontSize="17px">
                   <a href={`mailto:${email}`}>E: {email}</a>
                 </Text>
@@ -71,7 +69,7 @@ const Footer: FC<FooterI> = ({ data, navList }) => {
           </GridItem>
           <GridItem display={{ base: 'none', lg: 'block' }}>
             <Box display="flex" alignItems="center" justifyContent="center">
-              <NavList list={navList || []} showLast={true} />
+              <NavList showLast={true} />
             </Box>
           </GridItem>
         </Grid>
