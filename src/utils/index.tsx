@@ -1,3 +1,5 @@
+import { NavLink } from '../interfaces';
+
 export const slugify = (text: string) => {
   return text
     .toString()

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { GlobalDataContext } from '../../../../context';
 import Icon from '../../atoms/icon';
@@ -8,7 +8,7 @@ import CustomDrawer from '../../molecules/drawer';
 import NavList from '../nav-list';
 import { Content } from './styles';
 
-const NavbarMenu = () => {
+const NavbarMenu: FC = () => {
   const { openNavbarMenu, setOpenNavbarMenu } = useContext(GlobalDataContext);
 
   return (
@@ -19,11 +19,11 @@ const NavbarMenu = () => {
       title={<Icon icon="brand" ariaLabel="logo de Nomad" />}
       content={
         <Content>
-          <NavList direction="vertical" />
+          <NavList isNavRes={true} direction="vertical" hideItems="all" />
           <span>
             <LanguageButton />
+            <ReservarButton />
           </span>
-          <ReservarButton />
         </Content>
       }
     />

@@ -26,7 +26,7 @@ const Navbar: FC = () => {
           </a>
         </Link>
         <NavbarActions>
-          <NavList direction="horizontal" />
+          <NavList direction="horizontal" hideItems="single" />
           <Divider height="20px" ml="2" borderColor="black" orientation="vertical" />
           <span>
             <LanguageButton />
