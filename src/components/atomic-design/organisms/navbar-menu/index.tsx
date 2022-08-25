@@ -26,7 +26,7 @@ const NavbarMenu: FC = () => {
       showFooter={true}
       footerContent={
         <ActionContent>
-          <LanguageButton />
+          <LanguageButton showIcon={true} />
           <ReservarButton size="lg" />
         </ActionContent>
       }

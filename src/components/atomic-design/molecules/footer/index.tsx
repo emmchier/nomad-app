@@ -69,7 +69,7 @@ const Footer: FC = () => {
           </GridItem>
           <GridItem display={{ base: 'none', lg: 'block' }}>
             <Box display="flex" alignItems="center" justifyContent="center">
-              <NavList showLast={true} />
+              <NavList isSubmenu={false} />
             </Box>
           </GridItem>
         </Grid>

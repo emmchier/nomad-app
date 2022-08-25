@@ -3,7 +3,11 @@ import React, { FC, useState } from 'react';
 import Button from '../button';
 import Icon from '../icon';
 
-const LanguageButton: FC = () => {
+interface LanguageButtonI {
+  showIcon?: boolean;
+}
+
+const LanguageButton: FC<LanguageButtonI> = ({ showIcon = false }) => {
   const [label, setLabel] = useState(true);
 
   const handleLenguage = () => {
@@ -15,7 +19,7 @@ const LanguageButton: FC = () => {
       variant="text"
       height="100%"
       ariaLabel="traducir al inglés"
-      iconLeft={true}
+      iconLeft={showIcon}
       icon={<Icon ariaLabel="icono universal" icon="language" />}
     >
       {label === true ? 'English' : 'Español'}
