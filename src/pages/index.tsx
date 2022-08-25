@@ -6,12 +6,19 @@ import { Box, Container } from '@chakra-ui/react';
 import Page from '../components/atomic-design/atoms/page';
 import { PageTypes } from '../interfaces';
 import Button from '../components/atomic-design/atoms/button';
+import { useRouter } from 'next/router';
+import ErrorPage from './404';
 
 interface PageProps {
   homeData: PageTypes;
 }
 
 const HomePage: NextPage<PageProps> = ({ homeData }) => {
+  const router = useRouter();
+  if (!router.isFallback && !homeData) {
+    return <ErrorPage />;
+  }
+
   const { metaTitle, metaDescription, metaTag, metaKeywords } = homeData;
 
   return (
