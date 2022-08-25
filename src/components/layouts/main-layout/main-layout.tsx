@@ -1,9 +1,6 @@
-import { FC, useContext, useState } from 'react';
-import { GlobalDataContext } from '../../../context';
-import useFecthData from '../../../hooks/useFecthData';
+import { FC } from 'react';
 
 import BannerDown from '../../atomic-design/atoms/banner-down';
-import CustomDrawer from '../../atomic-design/molecules/drawer';
 import Footer from '../../atomic-design/molecules/footer';
 
 import Navbar from '../../atomic-design/molecules/navbar';

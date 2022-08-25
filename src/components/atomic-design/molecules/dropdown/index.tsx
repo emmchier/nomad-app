@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 
-import { Container, Content, DropdownContent, DropdownItem, DropdownMenu, Header } from './styles';
+import { Container, Content, DropdownContent, DropdownItem, DropdownMenu } from './styles';
 
 interface DropdownI {
   children: React.ReactNode;

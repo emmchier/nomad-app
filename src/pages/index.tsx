@@ -12,7 +12,7 @@ interface PageProps {
 }
 
 const HomePage: NextPage<PageProps> = ({ homeData }) => {
-  const { metaTitle, metaDescription, metaTag, metaKeywords, sections, banner } = homeData;
+  const { metaTitle, metaDescription, metaTag, metaKeywords } = homeData;
 
   return (
     <Page title={metaTitle} description={metaDescription} keywords={metaKeywords} tag={metaTag}>

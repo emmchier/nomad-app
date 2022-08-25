@@ -23,7 +23,7 @@ export interface PageTypes {
   metaTitle?: string;
   metaDescription?: string;
   metaTag?: string;
-  metaKeywords?: string[];
+  metaKeywords?: string;
   banner?: string;
   sections?: Section[];
 }
