@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header`
   padding: ${({ theme }) => theme.spacing(6)} 0;
   position: fixed;
+  z-index: 999;
   top: 0;
   height: auto;
   width: 100%;

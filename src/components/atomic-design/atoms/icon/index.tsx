@@ -25,7 +25,7 @@ import {
   IncreibleIcon,
   InstagramIcon,
   LampIcon,
-  LenguageIcon,
+  LanguageIcon,
   LessIcon,
   ListoIcon,
   LocationIcon,
@@ -106,8 +106,8 @@ const Icon: FC<IconI> = ({
         return <InstagramIcon ariaLabel={ariaLabel} color={color} />;
       case 'lamp':
         return <LampIcon ariaLabel={ariaLabel} color={color} />;
-      case 'lenguage':
-        return <LenguageIcon ariaLabel={ariaLabel} color={color} />;
+      case 'language':
+        return <LanguageIcon ariaLabel={ariaLabel} color={color} />;
       case 'less':
         return <LessIcon ariaLabel={ariaLabel} color={color} />;
       case 'listo':

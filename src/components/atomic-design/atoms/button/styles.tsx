@@ -8,6 +8,7 @@ interface ButtonI {
   iconLeft?: boolean;
   width?: string;
   height?: string;
+  size: 'sm' | 'md' | 'lg';
 }
 
 const variantStyles = (variant: string) =>
@@ -133,6 +134,19 @@ const variantStyles = (variant: string) =>
     `,
   }[variant]);
 
+const sizeStyles = (size: string) =>
+  ({
+    sm: css`
+      padding: ${({ theme }) => theme.spacing(1.5)} ${({ theme }) => theme.spacing(3.5)};
+    `,
+    md: css`
+      padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
+    `,
+    lg: css`
+      padding: ${({ theme }) => theme.spacing(5)} ${({ theme }) => theme.spacing(5)} !important;
+    `,
+  }[size]);
+
 export const Container = styled.button<ButtonI>`
   position: relative;
   display: flex;
@@ -141,10 +155,9 @@ export const Container = styled.button<ButtonI>`
   cursor: pointer;
   border: none;
   padding: 0 ${({ theme }) => theme.spacing(4)};
-  font-size: ${({ theme }) => theme.font.body[2].desk.size};
-  line-height: ${({ theme }) => theme.font.body[2].desk.lineHeight};
   font-weight: ${({ theme }) => theme.font.weight.bold};
   ${({ variant }) => variantStyles(variant)};
+  ${({ size }) => sizeStyles(size)};
   transition: ${({ theme }) => theme.transition.main};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
@@ -160,6 +173,7 @@ export const Container = styled.button<ButtonI>`
       filter: brightness(0) invert(1);
     }
   }
+
   &:disabled {
     cursor: inherit;
     pointer-events: none;

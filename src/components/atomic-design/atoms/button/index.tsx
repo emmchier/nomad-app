@@ -7,6 +7,7 @@ interface PropTypes {
   type?: 'button' | 'submit' | 'reset';
   color?: string;
   variant?: 'contained' | 'outlined' | 'text' | 'icon';
+  size?: 'sm' | 'md' | 'lg';
   ariaLabel?: string;
   icon?: React.ReactNode;
   iconRight?: boolean;
@@ -29,6 +30,7 @@ const Button: FC<PropTypes> = ({
   iconRight = false,
   width = 'auto',
   height = 'auto',
+  size = 'md',
   onClick,
 }) => (
   <Container
@@ -40,6 +42,7 @@ const Button: FC<PropTypes> = ({
     width={width}
     height={height}
     onClick={onClick}
+    size={size}
   >
     {iconLeft && <IconLeft>{icon}</IconLeft>}
     {children}

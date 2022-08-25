@@ -100,6 +100,7 @@ export const theme = {
       regular: 400,
       medium: 500,
       bold: 700,
+      condensed: 800,
       black: 900,
     },
   },

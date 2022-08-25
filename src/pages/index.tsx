@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Box, Container } from '@chakra-ui/react';
 import Page from '../components/atomic-design/atoms/page';
 import { PageTypes } from '../interfaces';
+import Button from '../components/atomic-design/atoms/button';
 
 interface PageProps {
   homeData: PageTypes;
@@ -19,7 +20,17 @@ const HomePage: NextPage<PageProps> = ({ homeData }) => {
         <Container>Hero</Container>
       </Box>
       <Box as="section" height="100vh" bg="white">
-        <Container>Hotels</Container>
+        <Container>
+          <Button size="sm" ariaLabel="lalala">
+            Small
+          </Button>
+          <Button size="md" ariaLabel="lalala">
+            Medium
+          </Button>
+          <Button size="lg" ariaLabel="lalala">
+            Reservar
+          </Button>
+        </Container>
       </Box>
     </Page>
   );

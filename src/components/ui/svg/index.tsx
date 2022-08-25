@@ -494,7 +494,7 @@ export const LampIcon: FC<IconI> = ({ color = '#2B2B2B', ariaLabel = '' }) => {
   );
 };
 
-export const LenguageIcon: FC<IconI> = ({ color = '#2B2B2B', ariaLabel = '' }) => {
+export const LanguageIcon: FC<IconI> = ({ color = '#2B2B2B', ariaLabel = '' }) => {
   return (
     <svg
       aria-label={ariaLabel}

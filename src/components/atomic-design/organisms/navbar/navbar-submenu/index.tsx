@@ -4,18 +4,19 @@ import { ListItem } from '@chakra-ui/react';
 import Link from 'next/link';
 import Collapsible from '../../../atoms/collapse';
 import CustomList from '../../../atoms/list';
-import { NavLink } from '../../../../../interfaces';
 import { Content } from './styles';
 
 interface NavbarSubmenuI {
-  label?: string;
+  header?: React.ReactNode | React.ReactElement;
   subItems: string[] | any;
+  setExpand: (e: boolean) => void;
+  expand?: boolean;
 }
 
-const NavbarSubmenu: FC<NavbarSubmenuI> = ({ label = '', subItems }) => {
+const NavbarSubmenu: FC<NavbarSubmenuI> = ({ header, subItems, expand, setExpand }) => {
   return (
     <Content>
-      <Collapsible collapsibleItem={label}>
+      <Collapsible collapsibleItem={header} onClick={() => setExpand(!expand)}>
         <CustomList direction="vertical">
           {subItems.map((subItem: string) => (
             <ListItem key={subItem}>

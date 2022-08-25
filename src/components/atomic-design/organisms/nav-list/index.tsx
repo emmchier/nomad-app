@@ -1,6 +1,5 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import Link from 'next/link';
-var _ = require('lodash');
 
 import { ListItem } from '@chakra-ui/react';
 
@@ -10,6 +9,7 @@ import CustomList from '../../atoms/list';
 import { GlobalDataContext } from '../../../../context/index';
 import NavbarSubmenu from '../navbar/navbar-submenu';
 import { NavLink } from '../../../../interfaces/index';
+import NavbarSubmenuHeader from '../navbar/navbar-submenu/navbar-submenu-header';
 
 interface NavListI {
   direction?: string;
@@ -23,6 +23,7 @@ const NavList: FC<NavListI> = ({
   isNavRes = false,
 }) => {
   const { navList } = useContext(GlobalDataContext);
+  const [expand, setExpand] = useState(false);
 
   const hiddeItems = (hideAction: string) => {
     switch (hideAction) {
@@ -58,7 +59,12 @@ const NavList: FC<NavListI> = ({
                 <a>{item.title}</a>
               </Link>
             ) : isNavRes === true ? (
-              <NavbarSubmenu label={item.title} subItems={item?.activities} />
+              <NavbarSubmenu
+                expand={expand}
+                setExpand={setExpand}
+                header={<NavbarSubmenuHeader item={item.title} expand={expand} />}
+                subItems={item?.activities}
+              />
             ) : (
               <>{item.title}</>
             )}
