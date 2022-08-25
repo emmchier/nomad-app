@@ -18,8 +18,8 @@ const NavbarSubmenu: FC<NavbarSubmenuI> = ({ header, subItems, expand, setExpand
     <Content>
       <Collapsible collapsibleItem={header} onClick={() => setExpand(!expand)}>
         <CustomList direction="vertical">
-          {subItems.map((subItem: string) => (
-            <ListItem key={subItem}>
+          {subItems.map((subItem: string, index: number) => (
+            <ListItem key={index}>
               <Link href="[#!]" as="#!" passHref>
                 <a>{subItem}</a>
               </Link>

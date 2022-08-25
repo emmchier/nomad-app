@@ -48,10 +48,10 @@ const NavList: FC<NavListI> = ({
   return (
     <Nav role="navigation">
       <CustomList direction={direction}>
-        {hiddeItems(hideItems)?.map((item: NavLink) =>
+        {hiddeItems(hideItems)?.map((item: NavLink, index: number) =>
           item?.activities?.length === undefined || item?.activities?.length < 0 ? (
             <ListItem
-              key={slugify(item.title)}
+              key={index}
               borderRadius="8px"
               cursor="pointer"
               mr="2"
@@ -65,26 +65,27 @@ const NavList: FC<NavListI> = ({
           ) : isNavRes === true ? (
             <NavbarSubmenu
               expand={expand}
+              key={index}
               setExpand={setExpand}
               header={<NavbarSubmenuHeader item={item.title} expand={expand} />}
               subItems={item?.activities}
             />
           ) : (
-            <li>
+            <li key={index}>
               {isSubmenu ? (
                 <DropdownContainer>
                   <Dropdown item={item.title}>
                     <CustomList direction="vertical">
                       {item?.activities.map((activity) => (
-                        <ListItem>
+                        <ListItem key={activity}>
                           <Link href="#!">{activity}</Link>
                         </ListItem>
                       ))}
-                    </CustomList>{' '}
+                    </CustomList>
                   </Dropdown>
                 </DropdownContainer>
               ) : (
-                <a>{item.title}</a>
+                <a key={index}>{item.title}</a>
               )}
             </li>
           )
