@@ -10,7 +10,7 @@ import Button from '../../atoms/button';
 import { Header, NavbarActions, Brand, BurguerButton } from './styles';
 import { GlobalDataContext } from '../../../../context';
 import LanguageButton from '../../atoms/language-button';
-import ReservarButton from '../../atoms/reservar-button';
+import ReserveButton from '../../atoms/reserve-button';
 
 const Navbar: FC = () => {
   const { setOpenNavbarMenu } = useContext(GlobalDataContext);
@@ -31,7 +31,7 @@ const Navbar: FC = () => {
           <span>
             <LanguageButton />
           </span>
-          <ReservarButton />
+          <ReserveButton />
           <BurguerButton>
             <Button onClick={() => setOpenNavbarMenu(true)} height="100%" ariaLabel="abrir menú">
               <Icon icon="burger" color="#3D63A9" ariaLabel="menú hamburguesa" />

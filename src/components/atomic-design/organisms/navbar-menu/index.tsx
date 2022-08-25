@@ -3,7 +3,7 @@ import React, { FC, useContext } from 'react';
 import { GlobalDataContext } from '../../../../context';
 import Icon from '../../atoms/icon';
 import LanguageButton from '../../atoms/language-button';
-import ReservarButton from '../../atoms/reservar-button';
+import ReservarButton from '../../atoms/reserve-button';
 import CustomDrawer from '../../molecules/drawer';
 import NavList from '../nav-list';
 import { Content, ActionContent } from './styles';

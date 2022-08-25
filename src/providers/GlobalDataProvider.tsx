@@ -12,9 +12,19 @@ const GlobalDataProvider: FC<Proptypes> = ({ children }) => {
   const { state: footerData } = useFecthData('/footer');
 
   const [openNavbarMenu, setOpenNavbarMenu] = useState(false);
+  const [openReserveMenu, setOpenReserveMenu] = useState(false);
 
   return (
-    <GlobalDataContext.Provider value={{ navList, footerData, openNavbarMenu, setOpenNavbarMenu }}>
+    <GlobalDataContext.Provider
+      value={{
+        navList,
+        footerData,
+        openNavbarMenu,
+        setOpenNavbarMenu,
+        openReserveMenu,
+        setOpenReserveMenu,
+      }}
+    >
       {children}
     </GlobalDataContext.Provider>
   );

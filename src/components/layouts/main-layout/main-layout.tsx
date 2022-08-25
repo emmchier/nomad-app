@@ -8,6 +8,7 @@ import Footer from '../../atomic-design/molecules/footer';
 
 import Navbar from '../../atomic-design/molecules/navbar';
 import NavbarMenu from '../../atomic-design/organisms/navbar-menu';
+import ReserveMenu from '../../atomic-design/organisms/reserve-menu';
 import { MainContent, ScrolleableContent } from './styles';
 
 interface Proptypes {
@@ -24,6 +25,7 @@ const MainLayout: FC<Proptypes> = ({ children }) => {
       </ScrolleableContent>
       <BannerDown text="Gracias por scrollear  :)" />
       <NavbarMenu />
+      <ReserveMenu />
     </MainContent>
   );
 };
