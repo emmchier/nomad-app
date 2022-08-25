@@ -7,7 +7,7 @@ type PageTypes = {
   title?: string;
   description?: string;
   tag?: string;
-  keywords?: string[];
+  keywords?: string;
 };
 
 const Page: FC<PageTypes> = ({ children, title, description, tag, keywords }) => (
