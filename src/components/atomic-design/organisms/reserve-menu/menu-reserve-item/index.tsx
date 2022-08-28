@@ -7,7 +7,7 @@ import { GlobalDataContext } from '../../../../../context';
 import { unslugify } from '../../../../../utils';
 import { capitalizeFirstLetter } from '../../../../../utils/index';
 
-import { Content, ImageContainer, InfoContainer } from './styles';
+import { Content, ImageContainer, InfoContainer, ItemField } from './styles';
 
 interface MenuReserveItemI {
   img?: string;
@@ -26,11 +26,14 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
   services = [],
   price = '',
 }) => {
-  const { setOpenReserveMenu } = useContext(GlobalDataContext);
+  const { setOpenReserveMenu, setShowSnackbar } = useContext(GlobalDataContext);
 
-  const handleReserve = () => {
+  const handleReserve = (snackbarMessage: string) => {
     setOpenReserveMenu(false);
-    console.log('Reservaste!');
+    setShowSnackbar({
+      isShowing: true,
+      message: snackbarMessage,
+    });
   };
 
   const separatedServices = services
@@ -45,26 +48,33 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
           src={img ? img : ''}
           alt={alt}
           objectFit="cover"
-          width="230px"
-          height="230px"
+          width="100%"
+          height="100%"
           priority
         />
       </ImageContainer>
       <InfoContainer>
         <span>
-          <Box>
+          <ItemField>
             <Heading as="h3" fontWeight="extrabold" fontSize={25}>
               {name}
             </Heading>
             <Text mt={2}>{description}</Text>
-          </Box>
-          <Text color="grey.main" fontSize={13}>
-            {separatedServices}
-          </Text>
-          <Text color="grey.main">
-            Desde <b>${price}/Noche</b>
-          </Text>
-          <Button ariaLabel="reservar ahora" onClick={handleReserve}>
+          </ItemField>
+          <ItemField>
+            <Text color="grey.main" fontSize={13}>
+              {separatedServices}
+            </Text>
+          </ItemField>
+          <ItemField>
+            <Text color="grey.main">
+              Desde <b>${price}/Noche</b>
+            </Text>
+          </ItemField>
+          <Button
+            ariaLabel="reservar ahora"
+            onClick={() => handleReserve(`Tu reserva en hotel ${name} fue confirmada`)}
+          >
             Reservar Ahora
           </Button>
         </span>

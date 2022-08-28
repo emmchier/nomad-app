@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import { GlobalDataContext } from '../context/index';
 import useFecthData from '../hooks/useFecthData';
@@ -16,6 +16,11 @@ const GlobalDataProvider: FC<Proptypes> = ({ children }) => {
   const [openNavbarMenu, setOpenNavbarMenu] = useState(false);
   const [openReserveMenu, setOpenReserveMenu] = useState(false);
 
+  const [showSnackbar, setShowSnackbar] = useState({
+    isShowing: false,
+    message: '',
+  });
+
   const cities = hotelsData?.cities?.map((city: City) => city);
 
   return (
@@ -28,6 +33,8 @@ const GlobalDataProvider: FC<Proptypes> = ({ children }) => {
         setOpenNavbarMenu,
         openReserveMenu,
         setOpenReserveMenu,
+        showSnackbar,
+        setShowSnackbar,
       }}
     >
       {children}

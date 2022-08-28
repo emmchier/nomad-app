@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from 'next';
 import { baseDevUrl } from '../../config';
 import axios from 'axios';
 
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Container, useToast } from '@chakra-ui/react';
 import Page from '../components/atomic-design/atoms/page';
 import { PageTypes } from '../interfaces';
 import Button from '../components/atomic-design/atoms/button';
