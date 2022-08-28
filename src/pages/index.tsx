@@ -8,6 +8,7 @@ import { PageTypes } from '../interfaces';
 import Button from '../components/atomic-design/atoms/button';
 import { useRouter } from 'next/router';
 import ErrorPage from './404';
+import Carousel from '../components/atomic-design/organisms/carousel';
 
 interface PageProps {
   homeData: PageTypes;
@@ -19,26 +20,17 @@ const HomePage: NextPage<PageProps> = ({ homeData }) => {
     return <ErrorPage />;
   }
 
-  const { metaTitle, metaDescription, metaTag, metaKeywords } = homeData;
+  const { metaTitle, metaDescription, metaTag, metaKeywords, sections } = homeData;
+
+  const homeSection = sections?.find((section) => section.slug === 'hero');
+  console.log(homeSection?.experiences);
 
   return (
     <Page title={metaTitle} description={metaDescription} keywords={metaKeywords} tag={metaTag}>
-      <Box as="section" height="100vh" bg="blue.200">
-        <Container>Hero</Container>
+      <Box as="section" height="100vh">
+        <Carousel images={homeSection?.experiences} />
       </Box>
-      <Box as="section" height="100vh" bg="white">
-        <Container>
-          <Button size="sm" ariaLabel="lalala">
-            Small
-          </Button>
-          <Button size="md" ariaLabel="lalala">
-            Medium
-          </Button>
-          <Button size="lg" ariaLabel="lalala">
-            Reservar
-          </Button>
-        </Container>
-      </Box>
+      <Box as="section" height="100vh" bg="white"></Box>
     </Page>
   );
 };
