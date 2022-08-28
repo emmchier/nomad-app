@@ -22,6 +22,10 @@ interface DrawerI {
   isTitleImage?: boolean;
   showFooter?: boolean;
   setOpen: (e: boolean) => void;
+  styles?: {};
+  headerStyles?: {};
+  bodyStyles?: {};
+  footerStyles?: {};
 }
 
 const CustomDrawer: FC<DrawerI> = ({
@@ -33,21 +37,30 @@ const CustomDrawer: FC<DrawerI> = ({
   showFooter = false,
   footerContent = '',
   setOpen,
+  styles = { pt: 10 },
+  headerStyles,
+  bodyStyles,
+  footerStyles = { pt: 0 },
 }) => {
   const { onClose } = useDisclosure();
 
   return (
     <Drawer onClose={onClose} isOpen={open} size={size}>
       <DrawerOverlay />
-      <DrawerContent pt={10}>
-        <DrawerHeader display="flex" alignItems="center" justifyContent="space-between">
+      <DrawerContent {...styles}>
+        <DrawerHeader
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+          {...headerStyles}
+        >
           {isTitleImage ? <ImageContent>{title}</ImageContent> : title}
           <Button variant="icon" ariaLabel="cerrar menú lateral" onClick={() => setOpen(false)}>
             <Icon icon="close" ariaLabel="icono de cerrar" />
           </Button>
         </DrawerHeader>
-        <DrawerBody>{content}</DrawerBody>
-        {showFooter && <DrawerFooter pt={0}>{footerContent}</DrawerFooter>}
+        <DrawerBody {...bodyStyles}>{content}</DrawerBody>
+        {showFooter && <DrawerFooter {...footerStyles}>{footerContent}</DrawerFooter>}
       </DrawerContent>
     </Drawer>
   );

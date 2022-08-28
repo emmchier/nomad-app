@@ -13,21 +13,16 @@ interface PageProps {
   homeData: PageTypes;
 }
 
-const HomePage: NextPage<PageProps> = (/*{ homeData } */) => {
-  // const router = useRouter();
-  // if (!router.isFallback && !homeData) {
-  //   return <ErrorPage />;
-  // }
+const HomePage: NextPage<PageProps> = ({ homeData }) => {
+  const router = useRouter();
+  if (!router.isFallback && !homeData) {
+    return <ErrorPage />;
+  }
 
-  // const { metaTitle, metaDescription, metaTag, metaKeywords } = homeData;
+  const { metaTitle, metaDescription, metaTag, metaKeywords } = homeData;
 
   return (
-    <Page
-      title="{metaTitle}"
-      description="{metaDescription}"
-      keywords="{metaKeywords}"
-      tag="{metaTag}"
-    >
+    <Page title={metaTitle} description={metaDescription} keywords={metaKeywords} tag={metaTag}>
       <Box as="section" height="100vh" bg="blue.200">
         <Container>Hero</Container>
       </Box>
@@ -48,14 +43,14 @@ const HomePage: NextPage<PageProps> = (/*{ homeData } */) => {
   );
 };
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const home = await axios.get(`${baseDevUrl}/api/home`).then((res) => res);
+export const getStaticProps: GetStaticProps = async () => {
+  const home = await axios.get(`${baseDevUrl}/api/home`).then((res) => res);
 
-//   return {
-//     props: {
-//       homeData: home.data,
-//     },
-//   };
-// };
+  return {
+    props: {
+      homeData: home.data,
+    },
+  };
+};
 
 export default HomePage;

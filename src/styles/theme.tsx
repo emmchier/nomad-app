@@ -34,8 +34,8 @@ export const theme = {
     title: {
       1: {
         desk: {
-          size: '4.5em', // 72px
-          lineHeight: '3.875rem', // 62px
+          size: '3em', // 48px
+          lineHeight: '3.5em', // 56px
         },
         mob: {
           size: '2rem', // 32px

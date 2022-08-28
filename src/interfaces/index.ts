@@ -34,20 +34,6 @@ export interface Section {
   experiences?: string[];
 }
 
-export interface Availability {
-  zones?: Zone[];
-}
-
-export interface Zone {
-  name?: string;
-  countries?: Country[];
-}
-
-export interface Country {
-  name?: string;
-  countries?: City[];
-}
-
 export interface City {
   name?: string;
   hotels?: Hotel[];
@@ -59,4 +45,9 @@ export interface Hotel {
   description?: string;
   services?: string[];
   price?: number;
+  available?: boolean;
+}
+
+export interface Service {
+  name?: string;
 }

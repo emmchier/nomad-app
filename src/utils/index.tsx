@@ -11,4 +11,9 @@ export const slugify = (text: string) => {
     .replace(/\-\-+/g, '-'); // replace multiple '-' with single '-'
 };
 
+export const unslugify = (text: string) => {
+  var words = text.split('-');
+  return words.map((word: string) => word.toLowerCase()).join(' ');
+};
+
 export const capitalizeFirstLetter = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
