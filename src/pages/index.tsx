@@ -2,13 +2,22 @@ import type { GetStaticProps, NextPage } from 'next';
 import { baseDevUrl } from '../../config';
 import axios from 'axios';
 
-import { Box, Container, useToast } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import Page from '../components/atomic-design/atoms/page';
 import { PageTypes } from '../interfaces';
-import Button from '../components/atomic-design/atoms/button';
 import { useRouter } from 'next/router';
 import ErrorPage from './404';
-import Carousel from '../components/atomic-design/organisms/carousel';
+
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper';
+import { Content } from '../styles/pages/home/home-styles';
+import { slugify } from '../utils';
 
 interface PageProps {
   homeData: PageTypes;
@@ -23,12 +32,40 @@ const HomePage: NextPage<PageProps> = ({ homeData }) => {
   const { metaTitle, metaDescription, metaTag, metaKeywords, sections } = homeData;
 
   const homeSection = sections?.find((section) => section.slug === 'hero');
-  console.log(homeSection?.experiences);
 
   return (
     <Page title={metaTitle} description={metaDescription} keywords={metaKeywords} tag={metaTag}>
       <Box as="section" height="100vh">
-        <Carousel images={homeSection?.experiences} />
+        <Content>
+          <Swiper
+            spaceBetween={30}
+            effect="fade"
+            navigation={true}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Autoplay, EffectFade, Navigation, Pagination]}
+          >
+            {homeSection?.experiences?.map((img: string) => (
+              <SwiperSlide key={img}>
+                <Image
+                  src={img ? `/images/${slugify(img)}.png` : ''}
+                  alt={img}
+                  objectFit="cover"
+                  width="100%"
+                  height="100%"
+                  layout="fill"
+                  priority
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Content>
       </Box>
       <Box as="section" height="100vh" bg="white"></Box>
     </Page>
