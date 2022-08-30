@@ -45,13 +45,13 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link
             rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Yesteryear&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
             as="style"
           />
 
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Yesteryear&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
             as="style"
           />
         </Head>
