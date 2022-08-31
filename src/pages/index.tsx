@@ -36,13 +36,14 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
   const bannerSection = sections?.find((section) => section.slug === 'banner');
   const hotelsSection = sections?.find((section) => section.slug === 'hotels');
 
-  console.log(hotelsSection);
   const currentCity = hotelData?.cities
     ?.map((city: City) => city)
     .find((city: City) => city.name === 'Arequipa');
 
+  const bannerTitle = bannerSection?.title as unknown as string[];
+
   const getFormatedBanner = () =>
-    bannerSection?.title?.map((text: string) =>
+    bannerTitle?.map((text: string) =>
       text === 'aventuras locales' ? <span key={text}>{text}</span> : text
     );
 
