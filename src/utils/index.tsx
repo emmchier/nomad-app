@@ -1,4 +1,12 @@
-import { ActivitiesIcon, CoworkingIcon, GastroIcon } from '../components/ui/svg';
+import {
+  ActivitiesIcon,
+  BathIcon,
+  CoworkingIcon,
+  GastroIcon,
+  LampIcon,
+  PartyIcon,
+  TVIcon,
+} from '../components/ui/svg';
 import { WifiIcon } from '../components/ui/svg/index';
 
 export const slugify = (text: string) => {
@@ -49,20 +57,24 @@ export const getColor = (name: string) => {
 
 export const getServiceIcon = (name: string, color: string) => {
   switch (name) {
-    case 'actividades':
-      return <ActivitiesIcon color={color} />;
+    case 'actividades-spa':
+      return <LampIcon color={color} />;
     case 'espacio-coworking':
       return <CoworkingIcon color={color} />;
     case 'gastronomia-vegana':
       return <GastroIcon color={color} />;
-    case 'piscina' || 'piscina-climatizada':
-      return <GastroIcon color={color} />;
+    case 'piscina':
+      return <BathIcon color={color} />;
+    case 'piscina-climatizada':
+      return <BathIcon color={color} />;
     case 'habitaciones-vip':
-      return <GastroIcon color={color} />;
+      return <TVIcon color={color} />;
     case 'wifi-gratis':
       return <WifiIcon color={color} />;
     case 'salon-de-eventos':
-      return <WifiIcon color={color} />;
+      return <PartyIcon color={color} />;
+    case 'recreamientos':
+      return <ActivitiesIcon color={color} />;
     default:
       return null;
   }

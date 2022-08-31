@@ -13,6 +13,14 @@ export const Content = styled.div`
   border-radius: ${({ theme }) => theme.border.radius.main};
   display: flex;
   align-items: center;
+
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    width: auto;
+    display: block;
+    flex-direction: column;
+    box-shadow: ${({ theme }) => theme.shadow.main};
+    margin-bottom: ${({ theme }) => theme.spacing(25)};
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -30,15 +38,18 @@ export const ImageContainer = styled.div`
       height: 432px !important;
       width: 624px !important;
     }
-
     @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
-      height: auto !important;
+      height: 100% !important;
       width: 100% !important;
+      display: flex;
     }
   }
 
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
-    width: 100% !important;
+    width: auto !important;
+    overflow: hidden !important;
+    min-height: auto;
+    min-width: auto;
   }
 `;
 
@@ -83,6 +94,20 @@ export const Banner = styled.div<BannerI>`
   flex-direction: column;
   right: -40px;
   bottom: 40px;
+
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-width: 100%;
+    margin: ${({ theme }) => theme.spacing(5)};
+    padding: ${({ theme }) => theme.spacing(5)};
+
+    h4:nth-child(2) {
+      font-size: ${({ theme }) => theme.spacing(12)};
+    }
+  }
 
   p {
     color: ${({ theme }) => theme.color.white};

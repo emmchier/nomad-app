@@ -2,9 +2,9 @@ import type { GetStaticProps, NextPage } from 'next';
 import { baseDevUrl } from '../../config';
 import axios from 'axios';
 
-import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import { Container, Heading, Text, useMediaQuery } from '@chakra-ui/react';
 import Page from '../components/atomic-design/atoms/page';
-import { City, PageTypes } from '../interfaces';
+import { City, Hotel, PageTypes } from '../interfaces';
 import { useRouter } from 'next/router';
 import ErrorPage from './404';
 
@@ -13,11 +13,14 @@ import {
   BannerContainer,
   HomeSection,
   HotelsSection,
+  BannerSection,
   TitleContainer,
   HotelsSectionContent,
+  SectionHeader,
 } from '../styles/pages/home/home-styles';
 import HomeSectionCarousel from '../components/atomic-design/organisms/home-section/home-section-carousel';
 import HotelsSectionCarousel from '../components/atomic-design/organisms/hotels-section/hotels-section-carousel';
+import HotelsSectionCarouselItem from '../components/atomic-design/organisms/hotels-section/hotels-section-carousel/hotels-section-carousel-item';
 
 interface PageProps {
   homeData: PageTypes;
@@ -40,12 +43,14 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
     ?.map((city: City) => city)
     .find((city: City) => city.name === 'Arequipa');
 
-  // const bannerTitle = bannerSection?.title as unknown as string[];
+  const bannerTitle = bannerSection?.title as unknown as string[];
 
-  // const getFormatedBanner = () =>
-  //   bannerTitle?.map((text: string) =>
-  //     text === 'aventuras locales' ? <span key={text}>{text}</span> : text
-  //   );
+  const getFormatedBanner = () =>
+    bannerTitle?.map((text: string) =>
+      text === 'aventuras locales' ? <span key={text}>{text}</span> : text
+    );
+
+  const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
 
   return (
     <Page title={metaTitle} description={metaDescription} keywords={metaKeywords} tag={metaTag}>
@@ -58,29 +63,49 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
         <HomeSectionCarousel items={homeSection?.experiences} />
       </HomeSection>
 
-      <Box as="section" bg="white">
-        <Container display="flex" height="110vh" alignItems="center" justifyContent="center">
-          <BannerContainer>
+      <BannerSection>
+        <BannerContainer>
+          <Container bg="white">
             <Heading variant="h1" as="h3" fontWeight="light" fontSize="52px">
-              {/* {getFormatedBanner()} */}
-              {bannerSection?.title}
+              {getFormatedBanner()}
             </Heading>
-          </BannerContainer>
-        </Container>
-      </Box>
+          </Container>
+        </BannerContainer>
+      </BannerSection>
 
       <HotelsSection>
         <BackgroundGrey />
         <HotelsSectionContent>
           <Container>
-            <Heading as="h1" variant="h5" fontSize="48px" fontWeight="extrabold">
-              {hotelsSection?.title}
-            </Heading>
-            <Text margin="25px 0 30px" maxWidth="40%">
-              {hotelsSection?.description}
-            </Text>
+            <SectionHeader>
+              <Heading as="h1" variant="h5" fontSize="48px" fontWeight="extrabold">
+                {hotelsSection?.title}
+              </Heading>
+              <Text margin="25px 0 30px" maxWidth="40%">
+                {hotelsSection?.description}
+              </Text>
+            </SectionHeader>
           </Container>
-          <HotelsSectionCarousel data={currentCity} />
+          {isMobile ? (
+            currentCity?.hotels?.map((hotel: Hotel) =>
+              hotel.available === true ? (
+                <Container as="ul">
+                  <li key={hotel.name}>
+                    <HotelsSectionCarouselItem
+                      city={currentCity.name}
+                      name={hotel.name}
+                      description={hotel.description}
+                      services={hotel.services}
+                    />
+                  </li>
+                </Container>
+              ) : (
+                <p>Este hotel no está disponible</p>
+              )
+            )
+          ) : (
+            <HotelsSectionCarousel data={currentCity} />
+          )}
         </HotelsSectionContent>
       </HotelsSection>
     </Page>

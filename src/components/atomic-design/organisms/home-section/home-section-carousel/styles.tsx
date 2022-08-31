@@ -4,6 +4,8 @@ export const Content = styled.div`
   .homeCarousel {
     height: 100vh;
     width: 100%;
+    position: relative;
+    z-index: 9;
 
     .swiper {
       width: 100%;
@@ -48,6 +50,11 @@ export const Content = styled.div`
       align-items: center;
       -webkit-box-pack: justify;
       justify-content: flex-start;
+
+      @media only screen and (${({ theme }) => theme.breakpoints.tabletLandscape}) {
+        padding-inline-start: 2rem;
+        padding-inline-end: 2rem;
+      }
     }
 
     .swiper-pagination-bullet {
@@ -68,10 +75,26 @@ export const Content = styled.div`
 
       p:nth-child(1) {
         font-weight: ${({ theme }) => theme.font.weight.regular};
+
+        @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+          font-weight: ${({ theme }) => theme.font.weight.condensed};
+          font-size: ${({ theme }) => theme.font.title[2].mob.size} !important;
+          padding: ${({ theme }) => theme.spacing(5)};
+        }
+      }
+
+      p:nth-child(2) {
+        @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+          display: none;
+        }
       }
 
       p {
         color: ${({ theme }) => theme.color.white};
+      }
+
+      @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+        margin-right: ${({ theme }) => theme.spacing(5)} !important;
       }
     }
 

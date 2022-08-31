@@ -26,6 +26,7 @@ const HotelsSectionCarousel: FC<HotelsSectionCarouselI> = ({ data }) => {
         pagination={false}
         modules={[Pagination]}
         className="hotelsCarousel"
+        watchSlidesProgress={true}
       >
         {hotels?.map((hotel: Hotel) =>
           hotel.available === true ? (

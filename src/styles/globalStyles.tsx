@@ -22,10 +22,15 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     overflow-x: hidden;
     font-family: 'Gibson', sans-serif !important;
-    /* font-family: 'Caveat', cursive !important; */
     font-size: ${({ theme }) => theme.font.body[2].desk.size};
     line-height: ${({ theme }) => theme.font.body[2].desk.lineHeight};
     font-weight: ${({ theme }) => theme.font.weight.medium};
+
+    @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+      p {
+        font-size: 20px !important;
+      }
+    }
   }
   * {
     text-decoration: none;

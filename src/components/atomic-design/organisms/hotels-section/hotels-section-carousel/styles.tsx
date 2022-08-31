@@ -13,6 +13,13 @@ export const Content = styled.div`
     }
 
     .swiper-slide {
+      opacity: 0.25;
+    }
+    .swiper-slide-visible {
+      opacity: 1;
+    }
+
+    .swiper-slide {
       width: auto !important;
       margin-right: ${({ theme }) => theme.spacing(40)} !important;
     }

@@ -6,13 +6,25 @@ export const HomeSection = styled.section`
   position: relative;
 `;
 
+export const BannerSection = styled.section`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.color.white};
+
+  @media only screen and (${({ theme }) => theme.breakpoints.tabletLandscape}) {
+    height: 90vh;
+  }
+`;
+
 export const TitleContainer = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
   position: absolute;
-  z-index: 9;
 
   h2 {
     color: ${({ theme }) => theme.color.white};
@@ -20,7 +32,19 @@ export const TitleContainer = styled.div`
     font-weight: 900;
     line-height: ${({ theme }) => theme.spacing(25)};
     max-width: ${({ theme }) => theme.spacing(110)};
-    z-index: 9;
+    position: relative;
+    z-index: 99;
+
+    @media only screen and (${({ theme }) => theme.breakpoints.tabletLandscape}) {
+      font-size: ${({ theme }) => theme.spacing(20)};
+      line-height: ${({ theme }) => theme.spacing(20)};
+      max-width: ${({ theme }) => theme.spacing(95)};
+    }
+
+    @media only screen and (${({ theme }) => theme.breakpoints.tablet}) {
+      font-size: ${({ theme }) => theme.spacing(16)};
+      max-width: 100%;
+    }
   }
 `;
 
@@ -33,17 +57,32 @@ export const BannerContainer = styled.div`
   text-align: center;
   max-width: 70%;
 
-  h2 {
-    font-weight: 100;
+  h3 {
+    font-weight: 200;
+
+    @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+      font-size: ${({ theme }) => theme.spacing(8)};
+      line-height: ${({ theme }) => theme.spacing(12)};
+      font-weight: 300;
+    }
+
+    span {
+      background: ${({ theme }) => theme.color.primary.main};
+      color: ${({ theme }) => theme.color.white};
+      padding: 2px ${({ theme }) => theme.spacing(2)};
+      margin: 0 ${({ theme }) => theme.spacing(3)};
+      line-height: ${({ theme }) => theme.spacing(20)};
+      font-weight: 900;
+
+      @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+        display: block;
+        line-height: ${({ theme }) => theme.spacing(15)};
+      }
+    }
   }
 
-  span {
-    background: ${({ theme }) => theme.color.primary.main};
-    color: ${({ theme }) => theme.color.white};
-    padding: ${({ theme }) => theme.spacing(2)};
-    margin: 0 ${({ theme }) => theme.spacing(3)};
-    line-height: 98px;
-    font-weight: 900;
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    max-width: 100% !important;
   }
 `;
 
@@ -57,6 +96,11 @@ export const HotelsSection = styled.section`
   flex-direction: column;
   background: ${({ theme }) => theme.color.white};
   padding-bottom: ${({ theme }) => theme.spacing(35)};
+
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    height: 100%;
+    padding-bottom: ${({ theme }) => theme.spacing(20)};
+  }
 `;
 
 export const BackgroundGrey = styled.div`
@@ -67,6 +111,20 @@ export const BackgroundGrey = styled.div`
   margin-right: ${({ theme }) => theme.spacing(40)};
   border-top-right-radius: ${({ theme }) => theme.border.radius.main};
   border-bottom-right-radius: ${({ theme }) => theme.border.radius.main};
+
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    border-radius: ${({ theme }) => theme.border.radius.main};
+    height: 100%;
+    width: 100%;
+  }
+`;
+
+export const SectionHeader = styled.div`
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    p {
+      max-width: 100% !important;
+    }
+  }
 `;
 
 export const HotelsSectionContent = styled.div`
@@ -78,4 +136,9 @@ export const HotelsSectionContent = styled.div`
   flex-direction: column;
   position: relative;
   margin: ${({ theme }) => theme.spacing(40)} 0;
+
+  @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
+    margin-top: ${({ theme }) => theme.spacing(25)};
+    margin-bottom: 0;
+  }
 `;
