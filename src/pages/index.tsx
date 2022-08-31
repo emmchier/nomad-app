@@ -40,12 +40,12 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
     ?.map((city: City) => city)
     .find((city: City) => city.name === 'Arequipa');
 
-  const bannerTitle = bannerSection?.title as unknown as string[];
+  // const bannerTitle = bannerSection?.title as unknown as string[];
 
-  const getFormatedBanner = () =>
-    bannerTitle?.map((text: string) =>
-      text === 'aventuras locales' ? <span key={text}>{text}</span> : text
-    );
+  // const getFormatedBanner = () =>
+  //   bannerTitle?.map((text: string) =>
+  //     text === 'aventuras locales' ? <span key={text}>{text}</span> : text
+  //   );
 
   return (
     <Page title={metaTitle} description={metaDescription} keywords={metaKeywords} tag={metaTag}>
@@ -62,7 +62,8 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
         <Container display="flex" height="110vh" alignItems="center" justifyContent="center">
           <BannerContainer>
             <Heading variant="h1" as="h3" fontWeight="light" fontSize="52px">
-              {getFormatedBanner()}
+              {/* {getFormatedBanner()} */}
+              {bannerSection?.title}
             </Heading>
           </BannerContainer>
         </Container>
