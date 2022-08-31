@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import Button from '../../../atoms/button';
 import { GlobalDataContext } from '../../../../../context';
-import { unslugify } from '../../../../../utils';
+import { getFamily, unslugify } from '../../../../../utils';
 import { capitalizeFirstLetter } from '../../../../../utils/index';
 
 import { Content, ImageContainer, InfoContainer, ItemField } from './styles';
@@ -39,7 +39,6 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
   const separatedServices = services
     .map((service: string) => capitalizeFirstLetter(unslugify(service)))
     .join(' • ');
-  console.log(separatedServices);
 
   return (
     <Content>
@@ -56,7 +55,14 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
       <InfoContainer>
         <span>
           <ItemField>
-            <Heading as="h3" fontWeight="extrabold" fontSize={25}>
+            <Heading
+              as="h3"
+              fontWeight={name === 'Urban' ? 900 : 600}
+              letterSpacing={name === 'Urban' ? 4 : 0}
+              textTransform={name === 'Urban' ? 'uppercase' : 'capitalize'}
+              fontSize={name === 'Tribe' ? 40 : 25}
+              fontFamily={getFamily(name)}
+            >
               {name}
             </Heading>
             <Text mt={2}>{description}</Text>

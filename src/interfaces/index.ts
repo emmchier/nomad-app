@@ -30,7 +30,8 @@ export interface PageTypes {
 
 export interface Section {
   slug?: string;
-  title?: string | string[];
+  title?: string[];
+  description?: string;
   experiences?: string[];
 }
 

@@ -1,100 +1,18 @@
 import styled from 'styled-components';
 
-export const HomeSectionContent = styled.div`
-  .swiper {
-    width: 100%;
-    height: 100vh;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-
-  .swiper-pagination {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: ${({ theme }) => theme.spacing(30)};
-    width: 100%;
-    padding-inline-start: 1rem;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-    max-width: 1240px;
-    padding-inline-start: 0;
-    padding-inline-end: 0;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: flex-start;
-  }
-
-  .swiper-pagination-bullet {
-    border-radius: 0;
-    width: auto;
-    height: 30px;
-    text-align: start;
-    line-height: 30px;
-    font-size: ${({ theme }) => theme.font.body[2]};
-    opacity: 0.5;
-    max-width: ${({ theme }) => theme.spacing(30)};
-    background: transparent;
-    margin-right: ${({ theme }) => theme.spacing(10)} !important;
-
-    &:hover {
-      opacity: 0.8;
-    }
-
-    p:nth-child(1) {
-      font-weight: ${({ theme }) => theme.font.weight.regular};
-    }
-
-    p {
-      color: ${({ theme }) => theme.color.white};
-    }
-  }
-
-  .swiper-pagination-bullet-active {
-    opacity: 1;
-
-    p {
-      color: ${({ theme }) => theme.color.white};
-      font-weight: ${({ theme }) => theme.font.weight.condensed};
-    }
-  }
+export const HomeSection = styled.section`
+  width: 100%;
+  height: 100vh;
+  position: relative;
 `;
 
 export const TitleContainer = styled.div`
-  position: absolute;
   height: 100vh;
   width: 100%;
-  max-width: 1280px;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: flex-start;
-  padding-inline-start: 1rem;
-  padding-inline-end: 1rem;
-  margin-inline-start: 5rem;
-  margin-inline-end: 5rem;
+  position: absolute;
+  z-index: 9;
 
   h2 {
     color: ${({ theme }) => theme.color.white};
@@ -104,4 +22,60 @@ export const TitleContainer = styled.div`
     max-width: ${({ theme }) => theme.spacing(110)};
     z-index: 9;
   }
+`;
+
+export const BannerContainer = styled.div`
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: center;
+  text-align: center;
+  max-width: 70%;
+
+  h2 {
+    font-weight: 100;
+  }
+
+  span {
+    background: ${({ theme }) => theme.color.primary.main};
+    color: ${({ theme }) => theme.color.white};
+    padding: ${({ theme }) => theme.spacing(2)};
+    margin: 0 ${({ theme }) => theme.spacing(3)};
+    line-height: 98px;
+    font-weight: 900;
+  }
+`;
+
+export const HotelsSection = styled.section`
+  width: 100%;
+  height: 110vh;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  background: ${({ theme }) => theme.color.white};
+  padding-bottom: ${({ theme }) => theme.spacing(35)};
+`;
+
+export const BackgroundGrey = styled.div`
+  position: absolute;
+  background: ${({ theme }) => theme.color.grey.blur};
+  width: 88%;
+  height: 105vh;
+  margin-right: ${({ theme }) => theme.spacing(40)};
+  border-top-right-radius: ${({ theme }) => theme.border.radius.main};
+  border-bottom-right-radius: ${({ theme }) => theme.border.radius.main};
+`;
+
+export const HotelsSectionContent = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  margin: ${({ theme }) => theme.spacing(40)} 0;
 `;

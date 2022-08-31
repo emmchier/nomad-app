@@ -15,7 +15,6 @@ const ReserveMenu: FC = () => {
   useEffect(() => {
     const item = cities?.find((city: City) => city.name === 'Arequipa');
     setCity(item);
-    console.log(city);
   }, [openReserveMenu]);
 
   return (

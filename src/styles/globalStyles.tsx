@@ -2,17 +2,17 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   @font-face {
-     font-family: 'Gibson';
-     font-style: normal;
-     font-weight: 300;
-     src: url('./fonts/gibson/Gibson-Regular.ttf');
+    font-family: 'Gibson';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./fonts/gibson/Gibson-Regular.ttf');
    }
 
   @font-face {
-     font-family: 'JosefinSlab';
-     font-style: normal;
-     font-weight: 300;
-     src: url('./fonts/josefin-slab/JosefinSlab-regular.ttf');
+    font-family: 'JosefinSlab';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./fonts/josefin-slab/JosefinSlab-regular.ttf');
    }
 
   body,

@@ -62,11 +62,6 @@ export const InfoContainer = styled.div`
     }
   }
 
-  b {
-    color: ${({ theme }) => theme.color.black};
-    font-weight: ${({ theme }) => theme.font.weight.condensed};
-  }
-
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
     height: auto !important;
 
@@ -78,6 +73,11 @@ export const InfoContainer = styled.div`
 `;
 
 export const ItemField = styled.div`
+  b {
+    color: ${({ theme }) => theme.color.black};
+    font-weight: 900 !important;
+  }
+
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
     margin: ${({ theme }) => theme.spacing(3)} 0;
   }
