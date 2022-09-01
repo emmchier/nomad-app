@@ -9,8 +9,7 @@ interface ReservarButtonI {
 }
 
 const ReserveButton: FC<ReservarButtonI> = ({ size = 'md' }) => {
-  const { openNavbarMenu, setOpenNavbarMenu, setOpenReserveMenu, setCursorType } =
-    useContext(UIContext);
+  const { openNavbarMenu, setOpenNavbarMenu, setOpenReserveMenu } = useContext(UIContext);
 
   const handleClick = () => {
     openNavbarMenu === true && setOpenNavbarMenu(false);
@@ -20,12 +19,11 @@ const ReserveButton: FC<ReservarButtonI> = ({ size = 'md' }) => {
   return (
     <Button
       onClick={handleClick}
-      onMouseEnter={() => setCursorType('reserve')}
-      onMouseLeave={() => setCursorType('')}
       ariaLabel="reservar"
       iconLeft={true}
       size={size}
       icon={<Icon ariaLabel="icono calendario" icon="calendar" color="white" />}
+      classes="add-custom-cursor"
     >
       Reservar
     </Button>

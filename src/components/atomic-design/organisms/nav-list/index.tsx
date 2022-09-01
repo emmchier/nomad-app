@@ -1,7 +1,7 @@
 import React, { FC, useContext, useState } from 'react';
 import Link from 'next/link';
 
-import { ListItem } from '@chakra-ui/react';
+import { ListItem, useMediaQuery } from '@chakra-ui/react';
 
 import { slugify } from '../../../../utils';
 

@@ -55,6 +55,10 @@ export const GlobalStyles = createGlobalStyle`
     cursor: none;
   }
 
+  .add-custom-cursor {
+    cursor: url(images/reserve-icon.svg), auto;
+  }
+
   .chakra-container {
     padding-left: ${({ theme }) => theme.spacing(7)} !important;
     padding-right: ${({ theme }) => theme.spacing(7)} !important;

@@ -47,7 +47,7 @@ const CustomDrawer: FC<DrawerI> = ({
 
   return (
     <Drawer onClose={onClose} isOpen={open} size={size}>
-      <DrawerOverlay />
+      <DrawerOverlay onClick={() => setOpen(open === true && false)} />
       <DrawerContent {...styles}>
         <DrawerHeader
           display="flex"

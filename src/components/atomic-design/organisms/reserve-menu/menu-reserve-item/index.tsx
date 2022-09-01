@@ -26,7 +26,7 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
   services = [],
   price = '',
 }) => {
-  const { setOpenReserveMenu, setShowSnackbar, setCursorType } = useContext(UIContext);
+  const { setOpenReserveMenu, setShowSnackbar } = useContext(UIContext);
 
   const handleReserve = (snackbarMessage: string) => {
     setOpenReserveMenu(false);
@@ -79,9 +79,8 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
           </ItemField>
           <Button
             ariaLabel="reservar ahora"
+            classes="add-custom-cursor"
             onClick={() => handleReserve(`Tu reserva en hotel ${name} fue confirmada`)}
-            onMouseEnter={() => setCursorType('reserve')}
-            onMouseLeave={() => setCursorType('')}
           >
             Reservar Ahora
           </Button>

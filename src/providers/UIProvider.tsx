@@ -9,6 +9,7 @@ const UIProvider: FC<Proptypes> = ({ children }) => {
   const [cursorType, setCursorType] = useState('');
   const [openNavbarMenu, setOpenNavbarMenu] = useState(false);
   const [openReserveMenu, setOpenReserveMenu] = useState(false);
+  const [languageMode, setLanguageMode] = useState(true);
 
   const [showSnackbar, setShowSnackbar] = useState({
     isShowing: false,
@@ -26,6 +27,8 @@ const UIProvider: FC<Proptypes> = ({ children }) => {
         setShowSnackbar,
         cursorType,
         setCursorType,
+        languageMode,
+        setLanguageMode,
       }}
     >
       {children}

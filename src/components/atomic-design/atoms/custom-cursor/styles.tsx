@@ -57,22 +57,6 @@ export const Content = styled.div`
     }
   }
 
-  .ring.reserve {
-    transition: all 0.3s ease;
-    width: 60px;
-    height: 60px;
-    background-color: ${({ theme }) => theme.color.orange.main};
-    border-color: ${({ theme }) => theme.color.orange.main};
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-
-    @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
-      background-color: transparent;
-      border-color: transparent;
-    }
-  }
-
   .hovered:hover ~ .ring {
     transform: translate(-50%, -50%) scale(8);
 
@@ -81,8 +65,7 @@ export const Content = styled.div`
     }
   }
 
-  .dot.hovered,
-  .dot.reserve {
+  .dot.hovered {
     display: none;
   }
 `;

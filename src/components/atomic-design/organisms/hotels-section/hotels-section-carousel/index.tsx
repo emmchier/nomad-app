@@ -25,7 +25,6 @@ const HotelsSectionCarousel: FC<HotelsSectionCarouselI> = ({ data }) => {
         centeredSlides={true}
         grabCursor={true}
         pagination={false}
-        navigation={true}
         keyboard={{
           enabled: true,
         }}

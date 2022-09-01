@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
 
-import { ListItem } from '@chakra-ui/react';
+import { ListItem, useMediaQuery } from '@chakra-ui/react';
 import Link from 'next/link';
 import Collapsible from '../../../atoms/collapse';
 import CustomList from '../../../atoms/list';
@@ -15,7 +15,8 @@ interface NavbarSubmenuI {
 }
 
 const NavbarSubmenu: FC<NavbarSubmenuI> = ({ header, subItems, expand, setExpand }) => {
-  const { setCursorType } = useContext(UIContext);
+  const { setCursorType, setOpenNavbarMenu } = useContext(UIContext);
+  const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
 
   return (
     <Content>
@@ -27,6 +28,7 @@ const NavbarSubmenu: FC<NavbarSubmenuI> = ({ header, subItems, expand, setExpand
                 <a
                   onMouseEnter={() => setCursorType('hovered')}
                   onMouseLeave={() => setCursorType('')}
+                  onClick={() => isMobile && setOpenNavbarMenu(false)}
                 >
                   {subItem}
                 </a>

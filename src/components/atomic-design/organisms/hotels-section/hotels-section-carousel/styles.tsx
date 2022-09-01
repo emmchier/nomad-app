@@ -23,8 +23,5 @@ export const Content = styled.div`
       width: auto !important;
       margin-right: ${({ theme }) => theme.spacing(40)} !important;
     }
-
-    .swiper-slide img {
-    }
   }
 `;

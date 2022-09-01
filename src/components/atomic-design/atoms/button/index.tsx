@@ -18,6 +18,7 @@ interface PropTypes {
   onClick?: (e: any) => any;
   onMouseEnter?: (e: any) => any;
   onMouseLeave?: (e: any) => any;
+  classes?: string;
 }
 
 const Button: FC<PropTypes> = ({
@@ -36,6 +37,7 @@ const Button: FC<PropTypes> = ({
   onClick,
   onMouseEnter,
   onMouseLeave,
+  classes = '',
 }) => (
   <Container
     type={type}
@@ -49,6 +51,7 @@ const Button: FC<PropTypes> = ({
     onMouseEnter={onMouseEnter}
     onMouseLeave={onMouseLeave}
     size={size}
+    className={classes}
   >
     {iconLeft && <IconLeft>{icon}</IconLeft>}
     {children}
