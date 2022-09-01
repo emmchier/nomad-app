@@ -50,8 +50,6 @@ const HomeSectionCarousel: FC<HomeSectionCarouselI> = ({ items }) => {
               src={img ? `/images/${slugify(img)}.png` : ''}
               alt={img}
               objectFit="cover"
-              width="100%"
-              height="100%"
               layout="fill"
               priority
             />
