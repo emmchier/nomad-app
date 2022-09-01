@@ -1,5 +1,5 @@
 import { Text } from '@chakra-ui/react';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { CloseIcon } from '../../../ui/svg';
 import Button from '../../atoms/button';

@@ -4,6 +4,7 @@ export const HomeSection = styled.section`
   width: 100%;
   height: 100vh;
   position: relative;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const BannerSection = styled.section`
@@ -99,7 +100,7 @@ export const HotelsSection = styled.section`
 
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
     height: 100%;
-    padding-bottom: ${({ theme }) => theme.spacing(20)};
+    padding-bottom: ${({ theme }) => theme.spacing(30)};
   }
 `;
 
@@ -114,7 +115,7 @@ export const BackgroundGrey = styled.div`
 
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
     border-radius: ${({ theme }) => theme.border.radius.main};
-    height: 100%;
+    height: 95%;
     width: 100%;
   }
 `;
@@ -138,7 +139,7 @@ export const HotelsSectionContent = styled.div`
   margin: ${({ theme }) => theme.spacing(40)} 0;
 
   @media only screen and (${({ theme }) => theme.breakpoints.mobile}) {
-    margin-top: ${({ theme }) => theme.spacing(25)};
+    margin-top: ${({ theme }) => theme.spacing(15)};
     margin-bottom: 0;
   }
 `;

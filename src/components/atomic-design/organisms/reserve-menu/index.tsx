@@ -1,14 +1,16 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
 
-import { GlobalDataContext } from '../../../../context';
+import { UIContext } from '../../../../context';
 import { Hotel } from '../../../../interfaces';
 import CustomDrawer from '../../molecules/drawer';
 import MenuReserveItem from './menu-reserve-item';
 import { City } from '../../../../interfaces/index';
 import { Heading } from '@chakra-ui/react';
+import { GlobalDataContext } from '../../../../context/index';
 
 const ReserveMenu: FC = () => {
-  const { openReserveMenu, setOpenReserveMenu, cities } = useContext(GlobalDataContext);
+  const { openReserveMenu, setOpenReserveMenu } = useContext(UIContext);
+  const { cities } = useContext(GlobalDataContext);
 
   const [city, setCity] = useState<City>({});
 
@@ -27,10 +29,10 @@ const ReserveMenu: FC = () => {
           Reservar
         </Heading>
       }
-      content={city?.hotels?.map((hotel: Hotel) =>
+      content={city?.hotels?.map((hotel: Hotel, index: number) =>
         hotel.available === true ? (
           <MenuReserveItem
-            key={hotel.name}
+            key={index}
             img={hotel.img}
             alt={hotel.name}
             name={hotel.name}
@@ -39,7 +41,7 @@ const ReserveMenu: FC = () => {
             price={hotel.price}
           />
         ) : (
-          <p>This hotel is not available</p>
+          <p key={index}>This hotel is not available</p>
         )
       )}
       styles={{ p: 3 }}

@@ -8,18 +8,18 @@ import NavList from '../../organisms/nav-list';
 import Button from '../../atoms/button';
 
 import { Header, NavbarActions, Brand, BurguerButton } from './styles';
-import { GlobalDataContext } from '../../../../context';
+import { UIContext } from '../../../../context';
 import LanguageButton from '../../atoms/language-button';
 import ReserveButton from '../../atoms/reserve-button';
 
 const Navbar: FC = () => {
-  const { setOpenNavbarMenu } = useContext(GlobalDataContext);
+  const { setOpenNavbarMenu, setCursorType } = useContext(UIContext);
 
   return (
     <Header>
       <Container display="flex" alignItems="center" justifyContent="space-between">
         <Link href="/" as="/" passHref>
-          <a>
+          <a onMouseEnter={() => setCursorType('hovered')} onMouseLeave={() => setCursorType('')}>
             <Brand>
               <Icon icon="brand" ariaLabel="logo de Nomad" />
             </Brand>

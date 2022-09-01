@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import {
   Drawer,
@@ -12,6 +12,7 @@ import {
 import Icon from '../../atoms/icon';
 import Button from '../../atoms/button';
 import { ImageContent } from './styles';
+import { UIContext } from '../../../../context';
 
 interface DrawerI {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';

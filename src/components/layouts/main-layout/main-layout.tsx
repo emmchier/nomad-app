@@ -1,7 +1,8 @@
 import { FC, useContext } from 'react';
-import { GlobalDataContext } from '../../../context';
+import { UIContext } from '../../../context';
 
 import BannerDown from '../../atomic-design/atoms/banner-down';
+import DotRing from '../../atomic-design/atoms/custom-cursor';
 import Footer from '../../atomic-design/molecules/footer';
 
 import Navbar from '../../atomic-design/molecules/navbar';
@@ -15,22 +16,25 @@ interface Proptypes {
 }
 
 const MainLayout: FC<Proptypes> = ({ children }) => {
-  const { showSnackbar, setShowSnackbar } = useContext(GlobalDataContext);
+  const { showSnackbar, setShowSnackbar } = useContext(UIContext);
 
-  const { isShowing, message, interval } = showSnackbar;
+  const { isShowing, message } = showSnackbar;
 
   return (
-    <MainContent role="main">
-      <ScrolleableContent>
-        <Navbar />
-        {children}
-        <Footer />
-      </ScrolleableContent>
-      <BannerDown text="Gracias por scrollear  :)" />
-      <NavbarMenu />
-      <ReserveMenu />
-      <Snackbar show={isShowing} message={message} setShow={setShowSnackbar} />
-    </MainContent>
+    <>
+      <MainContent role="main">
+        <ScrolleableContent>
+          <Navbar />
+          {children}
+          <Footer />
+        </ScrolleableContent>
+        <BannerDown text="Gracias por scrollear  :)" />
+        <NavbarMenu />
+        <ReserveMenu />
+        <Snackbar show={isShowing} message={message} setShow={setShowSnackbar} />
+      </MainContent>
+      <DotRing />
+    </>
   );
 };
 

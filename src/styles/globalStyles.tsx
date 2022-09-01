@@ -51,6 +51,10 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: ${({ theme }) => theme.font.weight.medium};
   }
 
+  * {
+    cursor: none;
+  }
+
   .chakra-container {
     padding-left: ${({ theme }) => theme.spacing(7)} !important;
     padding-right: ${({ theme }) => theme.spacing(7)} !important;

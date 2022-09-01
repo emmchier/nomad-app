@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-import { Pagination } from 'swiper';
+import { Keyboard, Navigation, Pagination } from 'swiper';
 
 import HotelsSectionCarouselItem from './hotels-section-carousel-item';
 import { Content } from './styles';
@@ -24,13 +25,17 @@ const HotelsSectionCarousel: FC<HotelsSectionCarouselI> = ({ data }) => {
         centeredSlides={true}
         grabCursor={true}
         pagination={false}
-        modules={[Pagination]}
+        navigation={true}
+        keyboard={{
+          enabled: true,
+        }}
+        modules={[Pagination, Navigation, Keyboard]}
         className="hotelsCarousel"
         watchSlidesProgress={true}
       >
-        {hotels?.map((hotel: Hotel) =>
+        {hotels?.map((hotel: Hotel, index: number) =>
           hotel.available === true ? (
-            <SwiperSlide key={hotel.name}>
+            <SwiperSlide key={index}>
               <HotelsSectionCarouselItem
                 city={name}
                 name={hotel.name}

@@ -6,7 +6,7 @@ import { ListItem } from '@chakra-ui/react';
 import { slugify } from '../../../../utils';
 
 import CustomList from '../../atoms/list';
-import { GlobalDataContext } from '../../../../context/index';
+import { GlobalDataContext, UIContext } from '../../../../context/index';
 import NavbarSubmenu from '../navbar/navbar-submenu';
 import { NavLink } from '../../../../interfaces/index';
 import NavbarSubmenuHeader from '../navbar/navbar-submenu/navbar-submenu-header';
@@ -29,6 +29,7 @@ const NavList: FC<NavListI> = ({
 }) => {
   const { navList } = useContext(GlobalDataContext);
   const [expand, setExpand] = useState(false);
+  const { setCursorType } = useContext(UIContext);
 
   const hiddeItems = (hideAction: string) => {
     switch (hideAction) {
@@ -59,7 +60,12 @@ const NavList: FC<NavListI> = ({
               py="2.5"
             >
               <Link href="[#!]" as="#!" passHref>
-                <a>{item.title}</a>
+                <a
+                  onMouseEnter={() => setCursorType('hovered')}
+                  onMouseLeave={() => setCursorType('')}
+                >
+                  {item.title}
+                </a>
               </Link>
             </ListItem>
           ) : isNavRes === true ? (
@@ -76,16 +82,33 @@ const NavList: FC<NavListI> = ({
                 <DropdownContainer>
                   <Dropdown item={item.title}>
                     <CustomList direction="vertical">
-                      {item?.activities.map((activity) => (
-                        <ListItem key={activity}>
-                          <Link href="#!">{activity}</Link>
+                      {item?.activities.map((activity: string, index: number) => (
+                        <ListItem key={index}>
+                          <Link
+                            href="#!"
+                            onMouseEnter={() => setCursorType('hovered')}
+                            onMouseLeave={() => setCursorType('')}
+                          >
+                            <a
+                              onMouseEnter={() => setCursorType('hovered')}
+                              onMouseLeave={() => setCursorType('')}
+                            >
+                              {activity}
+                            </a>
+                          </Link>
                         </ListItem>
                       ))}
                     </CustomList>
                   </Dropdown>
                 </DropdownContainer>
               ) : (
-                <a key={index}>{item.title}</a>
+                <a
+                  key={index}
+                  onMouseEnter={() => setCursorType('hovered')}
+                  onMouseLeave={() => setCursorType('')}
+                >
+                  {item.title}
+                </a>
               )}
             </li>
           )

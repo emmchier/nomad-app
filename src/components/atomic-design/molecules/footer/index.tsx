@@ -6,10 +6,11 @@ import { FooterContent } from './styles';
 import Icon from '../../atoms/icon';
 import NavList from '../../organisms/nav-list';
 import SocialNetworkList from '../../organisms/social-network-list';
-import { GlobalDataContext } from '../../../../context';
+import { GlobalDataContext, UIContext } from '../../../../context';
 
 const Footer: FC = () => {
-  const { footerData } = useContext(GlobalDataContext);
+  const { footerData, homeData } = useContext(GlobalDataContext);
+  const { setCursorType } = useContext(UIContext);
   const { prefix, phone, email, socialMedia } = footerData;
 
   return (
@@ -35,8 +36,7 @@ const Footer: FC = () => {
               w={{ base: '100%', lg: '90%' }}
               textAlign={{ base: 'center', lg: 'start' }}
             >
-              Here we should have a few words about what and who the company is. This should serve
-              well for SEO purposes.
+              {homeData?.metaDescription || ''}
             </Text>
             <SocialNetworkList list={socialMedia || []} />
           </GridItem>
@@ -58,11 +58,23 @@ const Footer: FC = () => {
                 </Heading>
 
                 <Text fontSize="17px" my="16px" mb="3px">
-                  <a href={`tel:${prefix}${phone}`}>T: {`(${prefix}) ${phone}`}</a>
+                  <a
+                    href={`tel:${prefix}${phone}`}
+                    onMouseEnter={() => setCursorType('hovered')}
+                    onMouseLeave={() => setCursorType('')}
+                  >
+                    T: {`(${prefix}) ${phone}`}
+                  </a>
                 </Text>
 
                 <Text fontSize="17px">
-                  <a href={`mailto:${email}`}>E: {email}</a>
+                  <a
+                    href={`mailto:${email}`}
+                    onMouseEnter={() => setCursorType('hovered')}
+                    onMouseLeave={() => setCursorType('')}
+                  >
+                    E: {email}
+                  </a>
                 </Text>
               </Box>
             </Box>

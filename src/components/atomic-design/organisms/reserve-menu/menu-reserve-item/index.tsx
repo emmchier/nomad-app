@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { Box, Heading, Text } from '@chakra-ui/react';
 import Button from '../../../atoms/button';
-import { GlobalDataContext } from '../../../../../context';
+import { GlobalDataContext, UIContext } from '../../../../../context';
 import { getFamily, unslugify } from '../../../../../utils';
 import { capitalizeFirstLetter } from '../../../../../utils/index';
 
@@ -26,7 +26,7 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
   services = [],
   price = '',
 }) => {
-  const { setOpenReserveMenu, setShowSnackbar } = useContext(GlobalDataContext);
+  const { setOpenReserveMenu, setShowSnackbar, setCursorType } = useContext(UIContext);
 
   const handleReserve = (snackbarMessage: string) => {
     setOpenReserveMenu(false);
@@ -80,6 +80,8 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
           <Button
             ariaLabel="reservar ahora"
             onClick={() => handleReserve(`Tu reserva en hotel ${name} fue confirmada`)}
+            onMouseEnter={() => setCursorType('reserve')}
+            onMouseLeave={() => setCursorType('')}
           >
             Reservar Ahora
           </Button>

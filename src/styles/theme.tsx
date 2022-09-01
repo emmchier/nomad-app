@@ -24,6 +24,7 @@ export const theme = {
     black: '#2B2B2B',
     success: '#17A3AB',
     error: '#FF0000',
+    cursor: '#E2E2E2',
   },
   font: {
     family: {

@@ -16,6 +16,8 @@ interface PropTypes {
   width?: string;
   height?: string;
   onClick?: (e: any) => any;
+  onMouseEnter?: (e: any) => any;
+  onMouseLeave?: (e: any) => any;
 }
 
 const Button: FC<PropTypes> = ({
@@ -32,6 +34,8 @@ const Button: FC<PropTypes> = ({
   height = 'auto',
   size = 'md',
   onClick,
+  onMouseEnter,
+  onMouseLeave,
 }) => (
   <Container
     type={type}
@@ -42,6 +46,8 @@ const Button: FC<PropTypes> = ({
     width={width}
     height={height}
     onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
     size={size}
   >
     {iconLeft && <IconLeft>{icon}</IconLeft>}

@@ -25,6 +25,10 @@ const HomeSectionCarousel: FC<HomeSectionCarouselI> = ({ items }) => {
       <Swiper
         effect="fade"
         centeredSlides={true}
+        keyboard={{
+          enabled: true,
+          onlyInViewport: false,
+        }}
         autoplay={{
           delay: 2500,
           disableOnInteraction: false,
@@ -40,8 +44,8 @@ const HomeSectionCarousel: FC<HomeSectionCarouselI> = ({ items }) => {
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         className="homeCarousel"
       >
-        {items?.map((img: string) => (
-          <SwiperSlide key={img}>
+        {items?.map((img: string, index: number) => (
+          <SwiperSlide key={index}>
             <Image
               src={img ? `/images/${slugify(img)}.png` : ''}
               alt={img}

@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { GlobalDataContext } from '../../../../context';
+import { UIContext } from '../../../../context';
 
 import Button from '../button';
 import Icon from '../icon';
@@ -9,7 +9,8 @@ interface ReservarButtonI {
 }
 
 const ReserveButton: FC<ReservarButtonI> = ({ size = 'md' }) => {
-  const { openNavbarMenu, setOpenNavbarMenu, setOpenReserveMenu } = useContext(GlobalDataContext);
+  const { openNavbarMenu, setOpenNavbarMenu, setOpenReserveMenu, setCursorType } =
+    useContext(UIContext);
 
   const handleClick = () => {
     openNavbarMenu === true && setOpenNavbarMenu(false);
@@ -19,6 +20,8 @@ const ReserveButton: FC<ReservarButtonI> = ({ size = 'md' }) => {
   return (
     <Button
       onClick={handleClick}
+      onMouseEnter={() => setCursorType('reserve')}
+      onMouseLeave={() => setCursorType('')}
       ariaLabel="reservar"
       iconLeft={true}
       size={size}

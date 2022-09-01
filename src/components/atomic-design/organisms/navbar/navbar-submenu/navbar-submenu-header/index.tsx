@@ -8,11 +8,13 @@ interface NavbarSubmenuHeaderI {
   expand?: boolean;
 }
 
-const NavbarSubmenuHeader: FC<NavbarSubmenuHeaderI> = ({ item = '', expand = false }) => (
-  <Content>
-    <a>{item}</a>
-    {expand === false ? <AddIcon /> : <LessIcon />}
-  </Content>
-);
+const NavbarSubmenuHeader: FC<NavbarSubmenuHeaderI> = ({ item = '', expand = false }) => {
+  return (
+    <Content>
+      <a>{item}</a>
+      {expand === false ? <AddIcon /> : <LessIcon />}
+    </Content>
+  );
+};
 
 export default NavbarSubmenuHeader;

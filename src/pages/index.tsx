@@ -8,6 +8,10 @@ import { City, Hotel, PageTypes } from '../interfaces';
 import { useRouter } from 'next/router';
 import ErrorPage from './404';
 
+import HomeSectionCarousel from '../components/atomic-design/organisms/home-section/home-section-carousel';
+import HotelsSectionCarousel from '../components/atomic-design/organisms/hotels-section/hotels-section-carousel';
+import HotelsSectionCarouselItem from '../components/atomic-design/organisms/hotels-section/hotels-section-carousel/hotels-section-carousel-item';
+
 import {
   BackgroundGrey,
   BannerContainer,
@@ -18,9 +22,6 @@ import {
   HotelsSectionContent,
   SectionHeader,
 } from '../styles/pages/home/home-styles';
-import HomeSectionCarousel from '../components/atomic-design/organisms/home-section/home-section-carousel';
-import HotelsSectionCarousel from '../components/atomic-design/organisms/hotels-section/hotels-section-carousel';
-import HotelsSectionCarouselItem from '../components/atomic-design/organisms/hotels-section/hotels-section-carousel/hotels-section-carousel-item';
 
 interface PageProps {
   homeData: PageTypes;
@@ -46,8 +47,8 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
   const bannerTitle = bannerSection?.title as unknown as string[];
 
   const getFormatedBanner = () =>
-    bannerTitle?.map((text: string) =>
-      text === 'aventuras locales' ? <span key={text}>{text}</span> : text
+    bannerTitle?.map((text: string, index: number) =>
+      text === 'aventuras locales' ? <span key={index}>{text}</span> : text
     );
 
   const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
@@ -87,10 +88,10 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
             </SectionHeader>
           </Container>
           {isMobile ? (
-            currentCity?.hotels?.map((hotel: Hotel) =>
+            currentCity?.hotels?.map((hotel: Hotel, index: number) =>
               hotel.available === true ? (
                 <Container as="ul">
-                  <li key={hotel.name}>
+                  <li key={index}>
                     <HotelsSectionCarouselItem
                       city={currentCity.name}
                       name={hotel.name}

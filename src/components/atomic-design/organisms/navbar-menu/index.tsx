@@ -1,6 +1,6 @@
 import React, { FC, useContext } from 'react';
 
-import { GlobalDataContext } from '../../../../context';
+import { UIContext } from '../../../../context';
 import Icon from '../../atoms/icon';
 import LanguageButton from '../../atoms/language-button';
 import ReservarButton from '../../atoms/reserve-button';
@@ -9,7 +9,7 @@ import NavList from '../nav-list';
 import { Content, ActionContent } from './styles';
 
 const NavbarMenu: FC = () => {
-  const { openNavbarMenu, setOpenNavbarMenu } = useContext(GlobalDataContext);
+  const { openNavbarMenu, setOpenNavbarMenu } = useContext(UIContext);
 
   return (
     <CustomDrawer
