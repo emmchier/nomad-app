@@ -17,15 +17,13 @@ const LanguageButton: FC<LanguageButtonI> = ({ showIcon = false }) => {
   const router = useRouter();
   const { locale } = router;
 
-  const getLocale = () => (languageMode === true ? 'es' : 'en');
-
   const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
 
   const getMessage = locale === 'en' ? 'Traducido al Español' : 'Translated to English';
 
   const handleLenguage = () => {
     setLanguageMode(!languageMode);
-    router.push(router.pathname, router.asPath, { locale: getLocale() });
+    router.push(router.pathname, router.asPath, { locale: !languageMode === true ? 'es' : 'en' });
     isMobile && setOpenNavbarMenu(!openNavbarMenu);
     setShowSnackbar({
       isShowing: true,
