@@ -78,7 +78,7 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
           </ItemField>
           <ItemField>
             <Text color="grey.main">
-              {locale === 'es' ? 'Desde' : 'Since'}
+              {locale === 'es' ? 'Desde' : 'Since'}{' '}
               <b>
                 ${price}/{locale === 'es' ? 'Noche' : 'Night'}
               </b>
