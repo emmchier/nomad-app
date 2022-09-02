@@ -10,6 +10,7 @@ import { Keyboard, Navigation, Pagination } from 'swiper';
 import HotelsSectionCarouselItem from './hotels-section-carousel-item';
 import { Content } from './styles';
 import { City, Hotel } from '../../../../../interfaces';
+import { useRouter } from 'next/router';
 
 interface HotelsSectionCarouselI {
   data: City;
@@ -17,6 +18,9 @@ interface HotelsSectionCarouselI {
 
 const HotelsSectionCarousel: FC<HotelsSectionCarouselI> = ({ data }) => {
   const { name, hotels } = data;
+
+  const router = useRouter();
+  const { locale } = router;
 
   return (
     <Content>
@@ -43,7 +47,7 @@ const HotelsSectionCarousel: FC<HotelsSectionCarouselI> = ({ data }) => {
               />
             </SwiperSlide>
           ) : (
-            <p>Este hotel no está disponible</p>
+            <p>{locale === 'es' ? 'Hotel no disponible' : 'Not available hotel'}</p>
           )
         )}
       </Swiper>

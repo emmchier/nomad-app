@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { FC } from 'react';
 
 import { GlobalDataContext } from '../context/index';
@@ -14,7 +15,12 @@ const GlobalDataProvider: FC<Proptypes> = ({ children }) => {
   const { state: footerData } = useFecthData('/footer');
   const { state: hotelsData } = useFecthData('/hotels/availability');
 
-  const cities = hotelsData?.cities?.map((city: City) => city);
+  const router = useRouter();
+  const { locale } = router;
+
+  const hotel = locale === 'es' ? hotelsData?.cities?.es : hotelsData?.cities?.en;
+
+  const cities = hotel?.map((city: City) => city);
 
   return (
     <GlobalDataContext.Provider

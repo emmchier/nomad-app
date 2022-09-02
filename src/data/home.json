@@ -1,27 +1,56 @@
 {
-  "metaTitle": "Nomad | tu tribu te espera",
-  "metaDescription": "Viví más, ahorrá más. Encontráte en sintonía con quienes trabajan recorriendo el mundo. Igual que vos.",
-  "metaTag": "",
-  "metaKeywords": "Concepto Co-living, Experiencias únicas, Gastronomía multi-formato",
-  "banner": "Gracias por scrollear  :)",
-  "sections": [
-    {
-      "slug": "hero",
-      "title": "Tu tribu te espera",
-      "experiences": ["Concepto Co-living", "Experiencias únicas", "Gastronomía multi-formato"]
-    },
-    {
-      "slug": "banner",
-      "title": [
-        "Un hogar con espacio para coworkear, conectarte con",
-        "aventuras locales",
-        "y personas increíbles."
-      ]
-    },
-    {
-      "slug": "hotels",
-      "title": "Hoteles que son hogares",
-      "description": "Siéntete parte de la tribu en un ambiente diseñado para que experimentes el viaje que va a cambiar algo en ti."
-    }
-  ]
+  "es": {
+    "metaTitle": "Nomad | Tu tribu te espera",
+    "metaDescription": "Viví más, ahorrá más. Encontráte en sintonía con quienes trabajan recorriendo el mundo. Igual que vos.",
+    "metaTag": "",
+    "metaKeywords": "Concepto Co-living, Experiencias únicas, Gastronomía multi-formato",
+    "banner": "Gracias por scrollear  :)",
+    "sections": [
+      {
+        "slug": "hero",
+        "title": "Tu tribu te espera",
+        "experiences": ["Concepto Co-living", "Experiencias únicas", "Gastronomía multi-formato"]
+      },
+      {
+        "slug": "banner",
+        "title": [
+          "Un hogar con espacio para coworkear, conectarte con",
+          "aventuras locales",
+          "y personas increíbles."
+        ]
+      },
+      {
+        "slug": "hotels",
+        "title": "Hoteles que son hogares",
+        "description": "Siéntete parte de la tribu en un ambiente diseñado para que experimentes el viaje que va a cambiar algo en ti."
+      }
+    ]
+  },
+  "en": {
+    "metaTitle": "Nomad | Your tribe awaits you",
+    "metaDescription": "Live more, save more. Find yourself in tune with those who work traveling the world. Same as you.",
+    "metaTag": "",
+    "metaKeywords": "Co-living Concept, Unique Experiences, Multi-format Gastronomy",
+    "banner": "Thanks for scrolling  :)",
+    "sections": [
+      {
+        "slug": "hero",
+        "title": "Your tribe awaits you",
+        "experiences": ["Co-living Concept", "Unique Experiences", "Multi-format Gastronomy"]
+      },
+      {
+        "slug": "banner",
+        "title": [
+          "A home with space to cowork, connect with",
+          "local adventures",
+          "and amazing people."
+        ]
+      },
+      {
+        "slug": "hotels",
+        "title": "Hotels that are homes",
+        "description": "Feel part of the tribe in an environment designed for you to experience the journey that will change something in you."
+      }
+    ]
+  }
 }

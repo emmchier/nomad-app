@@ -1,4 +1,5 @@
 import { useMediaQuery } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import React, { FC, useContext } from 'react';
 import { UIContext } from '../../../../context';
 
@@ -13,19 +14,22 @@ const LanguageButton: FC<LanguageButtonI> = ({ showIcon = false }) => {
   const { openNavbarMenu, setOpenNavbarMenu, setShowSnackbar, languageMode, setLanguageMode } =
     useContext(UIContext);
 
+  const router = useRouter();
+  const { locale } = router;
+
+  const getLocale = () => (languageMode === true ? 'es' : 'en');
+
   const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
 
-  const getLanguageLabel = (mode: boolean) => (mode === false ? 'Español' : 'English');
-
-  const getMessage = (mode: boolean) =>
-    mode === false ? 'Traducido al Español' : 'Translated to English';
+  const getMessage = locale === 'en' ? 'Traducido al Español' : 'Translated to English';
 
   const handleLenguage = () => {
     setLanguageMode(!languageMode);
+    router.push(router.pathname, router.asPath, { locale: getLocale() });
     isMobile && setOpenNavbarMenu(!openNavbarMenu);
     setShowSnackbar({
       isShowing: true,
-      message: getMessage(languageMode),
+      message: getMessage,
     });
   };
 
@@ -34,11 +38,13 @@ const LanguageButton: FC<LanguageButtonI> = ({ showIcon = false }) => {
       onClick={handleLenguage}
       variant="text"
       height="100%"
-      ariaLabel={getMessage(languageMode)}
+      ariaLabel={getMessage}
       iconLeft={showIcon}
-      icon={<Icon ariaLabel="icono universal" icon="language" />}
+      icon={
+        <Icon ariaLabel={locale === 'es' ? 'icono universal' : 'universal icon'} icon="language" />
+      }
     >
-      {getLanguageLabel(languageMode)}
+      {locale === 'es' ? 'Español' : 'English'}
     </Button>
   );
 };

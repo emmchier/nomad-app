@@ -8,6 +8,7 @@ import { getFamily, unslugify } from '../../../../../utils';
 import { capitalizeFirstLetter } from '../../../../../utils/index';
 
 import { Content, ImageContainer, InfoContainer, ItemField } from './styles';
+import { useRouter } from 'next/router';
 
 interface MenuReserveItemI {
   img?: string;
@@ -27,6 +28,9 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
   price = '',
 }) => {
   const { setOpenReserveMenu, setShowSnackbar } = useContext(UIContext);
+
+  const router = useRouter();
+  const { locale } = router;
 
   const handleReserve = (snackbarMessage: string) => {
     setOpenReserveMenu(false);
@@ -74,15 +78,24 @@ const MenuReserveItem: FC<MenuReserveItemI> = ({
           </ItemField>
           <ItemField>
             <Text color="grey.main">
-              Desde <b>${price}/Noche</b>
+              {locale === 'es' ? 'Desde' : 'Since'}
+              <b>
+                ${price}/{locale === 'es' ? 'Noche' : 'Night'}
+              </b>
             </Text>
           </ItemField>
           <Button
-            ariaLabel="reservar ahora"
+            ariaLabel={locale === 'es' ? '"reservar ahora"' : 'reserve now'}
             classes="add-custom-cursor"
-            onClick={() => handleReserve(`Tu reserva en hotel ${name} fue confirmada`)}
+            onClick={() =>
+              handleReserve(
+                locale === 'es'
+                  ? `Tu reserva en hotel ${name} fue confirmada`
+                  : `Your reservation at ${name} hotel was confirmed`
+              )
+            }
           >
-            Reservar Ahora
+            {locale === 'es' ? 'Reservar Ahora' : 'Reserve now'}
           </Button>
         </span>
       </InfoContainer>

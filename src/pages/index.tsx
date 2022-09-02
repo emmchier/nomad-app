@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { Container, Heading, Text, useMediaQuery } from '@chakra-ui/react';
 import Page from '../components/atomic-design/atoms/page';
-import { City, Hotel, PageTypes } from '../interfaces';
+import { City, Hotel, Section } from '../interfaces';
 import { useRouter } from 'next/router';
 import ErrorPage from './404';
 
@@ -22,25 +22,31 @@ import {
   HotelsSectionContent,
   SectionHeader,
 } from '../styles/pages/home/home-styles';
+import { getLinkLabel } from '../utils';
 
 interface PageProps {
-  homeData: PageTypes;
+  homeData: any;
   hotelData: any;
 }
 
 const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
   const router = useRouter();
+  const { locale } = router;
+
+  const home = locale === 'es' ? homeData.es : homeData.en;
+  const hotel = locale === 'es' ? hotelData.cities.es : hotelData.cities.en;
+
   if (!router.isFallback && !homeData) {
     return <ErrorPage />;
   }
 
-  const { metaTitle, metaDescription, metaTag, metaKeywords, sections } = homeData;
+  const { metaTitle, metaDescription, metaTag, metaKeywords, sections } = home;
 
-  const homeSection = sections?.find((section) => section.slug === 'hero');
-  const bannerSection = sections?.find((section) => section.slug === 'banner');
-  const hotelsSection = sections?.find((section) => section.slug === 'hotels');
+  const homeSection = sections?.find((section: Section) => section.slug === 'hero');
+  const bannerSection = sections?.find((section: Section) => section.slug === 'banner');
+  const hotelsSection = sections?.find((section: Section) => section.slug === 'hotels');
 
-  const currentCity = hotelData?.cities
+  const currentCity = hotel
     ?.map((city: City) => city)
     .find((city: City) => city.name === 'Arequipa');
 
@@ -48,7 +54,11 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
 
   const getFormatedBanner = () =>
     bannerTitle?.map((text: string, index: number) =>
-      text === 'aventuras locales' ? <span key={index}>{text}</span> : text
+      text === getLinkLabel(locale, 'aventuras locales', 'local adventures') ? (
+        <span key={index}>{text}</span>
+      ) : (
+        text
+      )
     );
 
   const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
@@ -88,21 +98,27 @@ const HomePage: NextPage<PageProps> = ({ homeData, hotelData }) => {
             </SectionHeader>
           </Container>
           {isMobile ? (
-            currentCity?.hotels?.map((hotel: Hotel, index: number) =>
-              hotel.available === true ? (
-                <Container as="ul">
-                  <li key={index}>
-                    <HotelsSectionCarouselItem
-                      city={currentCity.name}
-                      name={hotel.name}
-                      description={hotel.description}
-                      services={hotel.services}
-                    />
-                  </li>
-                </Container>
-              ) : (
-                <p>Este hotel no está disponible</p>
+            currentCity?.hotels.length > 0 ? (
+              currentCity?.hotels?.map((hotel: Hotel, index: number) =>
+                hotel.available === true ? (
+                  <Container as="ul">
+                    <li key={index}>
+                      <HotelsSectionCarouselItem
+                        city={currentCity.name}
+                        name={hotel.name}
+                        description={hotel.description}
+                        services={hotel.services}
+                      />
+                    </li>
+                  </Container>
+                ) : (
+                  <p>
+                    {locale === 'es' ? 'Este hotel no está disponible' : 'Hotel not available'}{' '}
+                  </p>
+                )
               )
+            ) : (
+              <p>Loading...</p>
             )
           ) : (
             <HotelsSectionCarousel data={currentCity} />

@@ -1,45 +1,90 @@
 {
-  "cities": [
-    {
-      "name": "Arequipa",
-      "hotels": [
-        {
-          "name": "Urban",
-          "img": "/images/urban.png",
-          "description": "Social hub de alta experiencia, para millennials y zetas ejecutivos.",
-          "services": [
-            "habitaciones-vip",
-            "piscina-climatizada",
-            "salon-de-eventos",
-            "espacio-coworking",
-            "wifi-gratis"
-          ],
-          "price": 4560,
-          "available": true
-        },
-        {
-          "name": "Tribe",
-          "img": "/images/tribe.png",
-          "description": "Exploradores, artistas y emprendedores juntos en un lugar único.",
-          "services": ["habitaciones-vip", "piscina", "gastronomia-vegana", "wifi-gratis"],
-          "price": 3190,
-          "available": true
-        },
-        {
-          "name": "Family",
-          "img": "/images/family.png",
-          "description": "Vive junto a toda tu familia la mejor experiencia de sus vidas.",
-          "services": [
-            "habitaciones-vip",
-            "piscina-climatizada",
-            "actividades-spa",
-            "recreamientos",
-            "wifi-gratis"
-          ],
-          "price": 4560,
-          "available": true
-        }
-      ]
-    }
-  ]
+  "cities": {
+    "es": [
+      {
+        "name": "Arequipa",
+        "hotels": [
+          {
+            "name": "Urban",
+            "img": "/images/urban.png",
+            "description": "Social hub de alta experiencia, para millennials y zetas ejecutivos.",
+            "services": [
+              "habitaciones-vip",
+              "piscina-climatizada",
+              "salon-de-eventos",
+              "espacio-coworking",
+              "wifi-gratis"
+            ],
+            "price": 4560,
+            "available": true
+          },
+          {
+            "name": "Tribe",
+            "img": "/images/tribe.png",
+            "description": "Exploradores, artistas y emprendedores juntos en un lugar único.",
+            "services": ["habitaciones-vip", "piscina", "gastronomia-vegana", "wifi-gratis"],
+            "price": 3190,
+            "available": true
+          },
+          {
+            "name": "Family",
+            "img": "/images/family.png",
+            "description": "Vive junto a toda tu familia la mejor experiencia de sus vidas.",
+            "services": [
+              "habitaciones-vip",
+              "piscina-climatizada",
+              "actividades-spa",
+              "recreamientos",
+              "wifi-gratis"
+            ],
+            "price": 4560,
+            "available": true
+          }
+        ]
+      }
+    ],
+    "en": [
+      {
+        "name": "Arequipa",
+        "hotels": [
+          {
+            "name": "Urban",
+            "img": "/images/urban.png",
+            "description": "High experience social hub, for millennials and executive zetas.",
+            "services": [
+              "vip-rooms",
+              "climatized-pool",
+              "event-room",
+              "coworking-space",
+              "free-wifi"
+            ],
+            "price": 4560,
+            "available": true
+          },
+          {
+            "name": "Tribe",
+            "img": "/images/tribe.png",
+            "description": "Explorers, artists and entrepreneurs together in a unique place.",
+            "services": ["vip-rooms", "swimming-pool", "vegan-gastronomy", "free-wifi"],
+            "price": 3190,
+            "available": true
+          },
+          {
+            "name": "Family",
+            "img": "/images/family.png",
+            "description": "Live with your whole family the best experience of your lives.",
+            "services": [
+              "vip-rooms",
+              "climatized-pool",
+              "spa-activities",
+              "recreations",
+              "free-wifi"
+            ],
+            "price": 4560,
+            "available": true
+          }
+        ]
+      }
+    ]
+  }
 }

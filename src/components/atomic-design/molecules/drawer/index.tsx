@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 
 import {
   Drawer,
@@ -12,7 +12,7 @@ import {
 import Icon from '../../atoms/icon';
 import Button from '../../atoms/button';
 import { ImageContent } from './styles';
-import { UIContext } from '../../../../context';
+import { useRouter } from 'next/router';
 
 interface DrawerI {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
@@ -45,6 +45,9 @@ const CustomDrawer: FC<DrawerI> = ({
 }) => {
   const { onClose } = useDisclosure();
 
+  const router = useRouter();
+  const { locale } = router;
+
   return (
     <Drawer onClose={onClose} isOpen={open} size={size}>
       <DrawerOverlay onClick={() => setOpen(open === true && false)} />
@@ -56,8 +59,12 @@ const CustomDrawer: FC<DrawerI> = ({
           {...headerStyles}
         >
           {isTitleImage ? <ImageContent>{title}</ImageContent> : title}
-          <Button variant="icon" ariaLabel="cerrar menú lateral" onClick={() => setOpen(false)}>
-            <Icon icon="close" ariaLabel="icono de cerrar" />
+          <Button
+            variant="icon"
+            ariaLabel={locale === 'es' ? 'cerrar menú lateral' : 'close side menu'}
+            onClick={() => setOpen(false)}
+          >
+            <Icon icon="close" ariaLabel={locale === 'es' ? 'icono de cerrar' : 'close icon'} />
           </Button>
         </DrawerHeader>
         <DrawerBody {...bodyStyles}>{content}</DrawerBody>

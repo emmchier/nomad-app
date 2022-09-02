@@ -7,10 +7,14 @@ import MenuReserveItem from './menu-reserve-item';
 import { City } from '../../../../interfaces/index';
 import { Heading } from '@chakra-ui/react';
 import { GlobalDataContext } from '../../../../context/index';
+import { useRouter } from 'next/router';
 
 const ReserveMenu: FC = () => {
   const { openReserveMenu, setOpenReserveMenu } = useContext(UIContext);
   const { cities } = useContext(GlobalDataContext);
+
+  const router = useRouter();
+  const { locale } = router;
 
   const [city, setCity] = useState<City>({});
 
@@ -26,7 +30,7 @@ const ReserveMenu: FC = () => {
       size="lg"
       title={
         <Heading as="h4" fontWeight="extrabold" fontSize={36}>
-          Reservar
+          {locale === 'es' ? 'Reservar' : 'Reserve'}
         </Heading>
       }
       content={city?.hotels?.map((hotel: Hotel, index: number) =>
@@ -41,7 +45,9 @@ const ReserveMenu: FC = () => {
             price={hotel.price}
           />
         ) : (
-          <p key={index}>This hotel is not available</p>
+          <p key={index}>
+            {locale === 'es' ? 'Este hotel no está disponible' : 'Hotel not available'}{' '}
+          </p>
         )
       )}
       styles={{ p: 3 }}

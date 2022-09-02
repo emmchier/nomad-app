@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { ListItem, useMediaQuery } from '@chakra-ui/react';
 
-import { slugify } from '../../../../utils';
+import { getLinkLabel, slugify } from '../../../../utils';
 
 import CustomList from '../../atoms/list';
 import { GlobalDataContext, UIContext } from '../../../../context/index';
@@ -13,6 +13,7 @@ import NavbarSubmenuHeader from '../navbar/navbar-submenu/navbar-submenu-header'
 import Dropdown from '../../molecules/dropdown';
 import { DropdownContainer } from '../../molecules/dropdown/styles';
 import { Nav } from './styles';
+import { useRouter } from 'next/router';
 
 interface NavListI {
   direction?: string;
@@ -31,18 +32,26 @@ const NavList: FC<NavListI> = ({
   const [expand, setExpand] = useState(false);
   const { setCursorType } = useContext(UIContext);
 
+  const router = useRouter();
+  const { locale } = router;
+  const nav = locale === 'es' ? navList.es : navList.en;
+
   const hiddeItems = (hideAction: string) => {
     switch (hideAction) {
       case 'single':
-        return navList.filter((item: NavLink) => slugify(item.title) !== 'inversores');
+        return nav?.filter(
+          (item: NavLink) => slugify(item.title) !== getLinkLabel(locale, 'inversores', 'investors')
+        );
       case 'all':
-        return navList.filter(
-          (item: NavLink) => slugify(item.title) !== 'inversores' && slugify(item.title) !== 'unete'
+        return nav?.filter(
+          (item: NavLink) =>
+            slugify(item.title) !== getLinkLabel(locale, 'inversores', 'investors') &&
+            slugify(item.title) !== getLinkLabel(locale, 'unete', 'join-up')
         );
       case 'none':
-        return navList;
+        return nav;
       default:
-        return navList;
+        return nav;
     }
   };
 

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { FC, useContext } from 'react';
 import { UIContext } from '../../../../context';
 
@@ -10,6 +11,8 @@ interface ReservarButtonI {
 
 const ReserveButton: FC<ReservarButtonI> = ({ size = 'md' }) => {
   const { openNavbarMenu, setOpenNavbarMenu, setOpenReserveMenu } = useContext(UIContext);
+  const router = useRouter();
+  const { locale } = router;
 
   const handleClick = () => {
     openNavbarMenu === true && setOpenNavbarMenu(false);
@@ -19,13 +22,19 @@ const ReserveButton: FC<ReservarButtonI> = ({ size = 'md' }) => {
   return (
     <Button
       onClick={handleClick}
-      ariaLabel="reservar"
+      ariaLabel={locale === 'es' ? 'reservar' : 'reserve'}
       iconLeft={true}
       size={size}
-      icon={<Icon ariaLabel="icono calendario" icon="calendar" color="white" />}
+      icon={
+        <Icon
+          ariaLabel={locale === 'es' ? 'icono de calendario' : 'calendar icon'}
+          icon="calendar"
+          color="white"
+        />
+      }
       classes="add-custom-cursor"
     >
-      Reservar
+      {locale === 'es' ? 'Reservar' : 'Reserve Now'}
     </Button>
   );
 };

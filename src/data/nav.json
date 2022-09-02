@@ -1,7 +1,22 @@
-[
-  { "title": "Alojate" },
-  { "title": "Co-Work" },
-  { "title": "Experimenta", "activities": ["City Host", "Actividades", "Gastronomía", "Eventos"] },
-  { "title": "Únete" },
-  { "title": "Inversores" }
-]
+{
+  "es": [
+    { "title": "Alojate" },
+    { "title": "Co-Work" },
+    {
+      "title": "Experimenta",
+      "activities": ["City Host", "Actividades", "Gastronomía", "Eventos"]
+    },
+    { "title": "Únete" },
+    { "title": "Inversores" }
+  ],
+  "en": [
+    { "title": "Stay" },
+    { "title": "Co-Work" },
+    {
+      "title": "Experiment",
+      "activities": ["City Host", "Activities", "Gastronomy", "Events"]
+    },
+    { "title": "Join up" },
+    { "title": "Investors" }
+  ]
+}

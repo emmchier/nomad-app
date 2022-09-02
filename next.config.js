@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ['en-US', 'es-ES'],
-    defaultLocale: 'es-ES',
+    locales: ['en', 'es'],
+    defaultLocale: 'es',
   },
   images: {
     domains: ['images.ctfassets.net'],

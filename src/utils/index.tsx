@@ -59,23 +59,52 @@ export const getServiceIcon = (name: string, color: string) => {
   switch (name) {
     case 'actividades-spa':
       return <LampIcon color={color} />;
+    case 'spa-activities':
+      return <LampIcon color={color} />;
     case 'espacio-coworking':
+      return <CoworkingIcon color={color} />;
+    case 'coworking-space':
       return <CoworkingIcon color={color} />;
     case 'gastronomia-vegana':
       return <GastroIcon color={color} />;
+    case 'vegan-gastronomy':
+      return <GastroIcon color={color} />;
     case 'piscina':
+      return <BathIcon color={color} />;
+    case 'swimming-pool':
       return <BathIcon color={color} />;
     case 'piscina-climatizada':
       return <BathIcon color={color} />;
+    case 'climatized-pool':
+      return <BathIcon color={color} />;
     case 'habitaciones-vip':
+      return <TVIcon color={color} />;
+    case 'vip-rooms':
       return <TVIcon color={color} />;
     case 'wifi-gratis':
       return <WifiIcon color={color} />;
+    case 'free-wifi':
+      return <WifiIcon color={color} />;
     case 'salon-de-eventos':
+      return <PartyIcon color={color} />;
+    case 'event-room':
       return <PartyIcon color={color} />;
     case 'recreamientos':
       return <ActivitiesIcon color={color} />;
+    case 'recreations':
+      return <ActivitiesIcon color={color} />;
     default:
       return null;
+  }
+};
+
+export const getLinkLabel = (mode: string | undefined, esWord: string, enWord: string) => {
+  switch (mode) {
+    case 'es':
+      return esWord;
+    case 'en':
+      return enWord;
+    default:
+      break;
   }
 };

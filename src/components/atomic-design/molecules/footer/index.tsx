@@ -7,11 +7,16 @@ import Icon from '../../atoms/icon';
 import NavList from '../../organisms/nav-list';
 import SocialNetworkList from '../../organisms/social-network-list';
 import { GlobalDataContext, UIContext } from '../../../../context';
+import { useRouter } from 'next/router';
 
 const Footer: FC = () => {
   const { footerData, homeData } = useContext(GlobalDataContext);
   const { setCursorType } = useContext(UIContext);
   const { prefix, phone, email, socialMedia } = footerData;
+
+  const router = useRouter();
+  const { locale } = router;
+  const home = locale === 'es' ? homeData.es : homeData.en;
 
   return (
     <FooterContent>
@@ -30,13 +35,13 @@ const Footer: FC = () => {
             alignItems={{ base: 'center', lg: 'flex-start' }}
             flexDirection="column"
           >
-            <Icon icon="brand" ariaLabel="logo de Nomad" />
+            <Icon icon="brand" ariaLabel={locale === 'es' ? 'logo de Nomad' : 'Nomad logo'} />
             <Text
               my="30px"
               w={{ base: '100%', lg: '90%' }}
               textAlign={{ base: 'center', lg: 'start' }}
             >
-              {homeData?.metaDescription || ''}
+              {home?.metaDescription || ''}
             </Text>
             <SocialNetworkList list={socialMedia || []} />
           </GridItem>
@@ -54,7 +59,7 @@ const Footer: FC = () => {
                 flexDirection="column"
               >
                 <Heading variant="h3" as="h6" fontWeight="bold" fontSize="24px">
-                  Contacta con nosotros
+                  {locale === 'es' ? 'Contacta con nosotros' : 'Connect with us'}
                 </Heading>
 
                 <Text fontSize="17px" my="16px" mb="3px">

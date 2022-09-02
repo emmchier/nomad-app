@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { FC, useContext } from 'react';
 
 import { UIContext } from '../../../../context';
@@ -11,13 +12,16 @@ import { Content, ActionContent } from './styles';
 const NavbarMenu: FC = () => {
   const { openNavbarMenu, setOpenNavbarMenu } = useContext(UIContext);
 
+  const router = useRouter();
+  const { locale } = router;
+
   return (
     <CustomDrawer
       open={openNavbarMenu}
       setOpen={setOpenNavbarMenu}
       size="full"
       isTitleImage={true}
-      title={<Icon icon="brand" ariaLabel="logo de Nomad" />}
+      title={<Icon icon="brand" ariaLabel={locale === 'es' ? 'logo de Nomad' : 'Nomad logo'} />}
       content={
         <Content>
           <NavList isNavRes={true} direction="vertical" hideItems="all" />

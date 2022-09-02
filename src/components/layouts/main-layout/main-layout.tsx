@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { FC, useContext } from 'react';
 import { UIContext } from '../../../context';
 
@@ -17,8 +18,10 @@ interface Proptypes {
 
 const MainLayout: FC<Proptypes> = ({ children }) => {
   const { showSnackbar, setShowSnackbar } = useContext(UIContext);
-
   const { isShowing, message } = showSnackbar;
+
+  const router = useRouter();
+  const { locale } = router;
 
   return (
     <>
@@ -28,7 +31,9 @@ const MainLayout: FC<Proptypes> = ({ children }) => {
           {children}
           <Footer />
         </ScrolleableContent>
-        <BannerDown text="Gracias por scrollear  :)" />
+        <BannerDown
+          text={locale === 'es' ? 'Gracias por scrollear  :)' : "Thank's for scrolling  :)"}
+        />
         <NavbarMenu />
         <ReserveMenu />
         <Snackbar show={isShowing} message={message} setShow={setShowSnackbar} />

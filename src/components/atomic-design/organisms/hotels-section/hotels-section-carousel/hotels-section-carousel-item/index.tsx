@@ -18,6 +18,7 @@ import { getColor, getServiceIcon, slugify } from '../../../../../../utils';
 import Image from 'next/image';
 import CustomList from '../../../../atoms/list';
 import { getFamily, unslugify, capitalizeFirstLetter } from '../../../../../../utils/index';
+import { useRouter } from 'next/router';
 
 interface HotelsSectionCarouselItemI {
   city?: string;
@@ -33,6 +34,8 @@ const HotelsSectionCarouselItem: FC<HotelsSectionCarouselItemI> = ({
   services = [],
 }) => {
   const [expand, setExpand] = useState(false);
+  const router = useRouter();
+  const { locale } = router;
 
   const [isMobile] = useMediaQuery(['(max-width: 767px)', '(display-mode: browser)']);
 
@@ -41,7 +44,7 @@ const HotelsSectionCarouselItem: FC<HotelsSectionCarouselItemI> = ({
       <ImageContainer>
         <Image
           src={`/images/${slugify(name)}.png` || ''}
-          alt={`Imágen de Hotel ${name}`}
+          alt={locale === 'es' ? `Imágen de Hotel ${name}` : `${name} hotel image`}
           objectFit="cover"
           width="100%"
           height="100%"
@@ -75,7 +78,9 @@ const HotelsSectionCarouselItem: FC<HotelsSectionCarouselItemI> = ({
           <SlideFade in={expand} offsetY="20px">
             <Text margin="16px 0">{description}</Text>
             <Divider borderColor={getColor(name)} borderBottomWidth="2px" />
-            <Text margin="16px 0">Servicios de este hotel</Text>
+            <Text margin="16px 0">
+              {locale === 'es' ? 'Servicios de este hotel' : 'Hotel services'}
+            </Text>
             <BannerServices>
               <CustomList direction="horizontal">
                 {services?.map((service: string) => (

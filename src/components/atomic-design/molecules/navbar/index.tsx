@@ -11,9 +11,13 @@ import { Header, NavbarActions, Brand, BurguerButton } from './styles';
 import { UIContext } from '../../../../context';
 import LanguageButton from '../../atoms/language-button';
 import ReserveButton from '../../atoms/reserve-button';
+import { useRouter } from 'next/router';
 
 const Navbar: FC = () => {
   const { setOpenNavbarMenu, setCursorType } = useContext(UIContext);
+
+  const router = useRouter();
+  const { locale } = router;
 
   return (
     <Header>
@@ -21,7 +25,7 @@ const Navbar: FC = () => {
         <Link href="/" as="/" passHref>
           <a onMouseEnter={() => setCursorType('hovered')} onMouseLeave={() => setCursorType('')}>
             <Brand>
-              <Icon icon="brand" ariaLabel="logo de Nomad" />
+              <Icon icon="brand" ariaLabel={locale === 'es' ? 'logo de Nomad' : 'Nomad logo'} />
             </Brand>
           </a>
         </Link>
@@ -33,8 +37,16 @@ const Navbar: FC = () => {
           </span>
           <ReserveButton />
           <BurguerButton>
-            <Button onClick={() => setOpenNavbarMenu(true)} height="100%" ariaLabel="abrir menú">
-              <Icon icon="burger" color="#3D63A9" ariaLabel="menú hamburguesa" />
+            <Button
+              onClick={() => setOpenNavbarMenu(true)}
+              height="100%"
+              ariaLabel={locale === 'es' ? 'abrir menú' : 'open menu'}
+            >
+              <Icon
+                icon="burger"
+                color="#3D63A9"
+                ariaLabel={locale === 'es' ? 'icono hamburguesa' : 'burguer icon'}
+              />
             </Button>
           </BurguerButton>
         </NavbarActions>

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface TitleContainerI {
+  maxWidth?: number;
+}
+
 export const HomeSection = styled.section`
   width: 100%;
   height: 100vh;
@@ -20,7 +24,7 @@ export const BannerSection = styled.section`
   }
 `;
 
-export const TitleContainer = styled.div`
+export const TitleContainer = styled.div<TitleContainerI>`
   height: 100vh;
   width: 100%;
   display: flex;
@@ -32,7 +36,7 @@ export const TitleContainer = styled.div`
     font-size: ${({ theme }) => theme.spacing(23)};
     font-weight: 900;
     line-height: ${({ theme }) => theme.spacing(25)};
-    max-width: ${({ theme }) => theme.spacing(110)};
+    max-width: ${({ maxWidth }) => maxWidth || '50%'};
     position: relative;
     z-index: 99;
 
