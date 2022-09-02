@@ -17,7 +17,7 @@ const ErrorPage: NextPage = () => {
           ? 'Algo salió mal. Porfavor volvé al home.'
           : 'Something is wrong. Please back to home and keep have fun!'
       }
-      keywords="Error page"
+      keywords={locale === 'es' ? 'Pagina de error, error 404' : 'Error page, error 404'}
       tag=""
     >
       <Box
@@ -34,7 +34,7 @@ const ErrorPage: NextPage = () => {
               Error 404
             </Heading>
             <Text py="4" fontSize={40}>
-              Don't worry.
+              {locale === 'es' ? 'Cosas que pasan...' : 'Things that happend'}
             </Text>
             <Link href="/" passHref>
               <a>
